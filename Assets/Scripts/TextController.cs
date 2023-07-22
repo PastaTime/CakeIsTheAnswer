@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using TMPro;
 using System.Text;
+using static GlobalData;
 
 public class textController : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class textController : MonoBehaviour
     private float cursorTimer;
     //private bool haltInput;
     private bool cursorOn = true;
-    private float waitTime = 0.1f;
+    private float waitTime = 0.15f;
     private float cursorWaitTime = 0.5f;
     private string cursor = "_";
     private int cursorLength = 5;
@@ -27,12 +28,19 @@ public class textController : MonoBehaviour
     private KeyCode down = KeyCode.DownArrow;
     private KeyCode left = KeyCode.LeftArrow;
     private KeyCode up = KeyCode.UpArrow;
-    private KeyCode delete = KeyCode.Delete;
+    private KeyCode delete = KeyCode.Backspace;
+    private KeyCode water = KeyCode.W;
+    private KeyCode next = KeyCode.Q;
+    private KeyCode back = KeyCode.E;
 
+    private int bottomBorder = 3;
     private string[] originalLines;
     private string[] currentLines;
+
     void Start()
     {
+        // for (int i = 0; i < textWindow.Files; i++)
+        // { allLines.Add(null); }
         resolutionWidth = textWindow.WindowWidth;
         string text = frame.text;
         originalLines = text.Split('\n');
@@ -58,15 +66,55 @@ public class textController : MonoBehaviour
         cursorTimer += Time.deltaTime;
         if (timer > waitTime)
         {
-            if (Input.GetKey(down)) { TriggerDown(); }
-            else if (Input.GetKey(left)) { TriggerLeft(); }
-            else if (Input.GetKey(right)) { TriggerRight(); }
-            else if (Input.GetKey(up)) { TriggerUp(); }
-            else if (Input.GetKey(delete)) { TriggerDelete(); }
+            if (Input.GetKey(down)) { TriggerDown(); timer = 0f; }
+            else if (Input.GetKey(left)) { TriggerLeft(); timer = 0f; }
+            else if (Input.GetKey(right)) { TriggerRight(); timer = 0f; }
+            else if (Input.GetKey(up)) { TriggerUp(); timer = 0f; }
+            else if (Input.GetKey(delete)) { TriggerDelete(); timer = 0f; }
+            else if (Input.GetKey(water)) { TriggerWater(); timer = 0f; }
+            else if (Input.GetKey(next)) { SaveImage(); LoadNewImage(-1); timer = 0f; }
+            else if (Input.GetKey(back)) { SaveImage(); LoadNewImage(1); timer = 0f; }
             else { Flicker(); }
-            timer = 0f;
         }
         //        }
+    }
+
+    private void SaveImage()
+    {
+        allLines[textWindow.Flower] = originalLines;
+    }
+
+    private void LoadNewImage(int dir)
+    {
+        textWindow.Next(dir);
+        resolutionWidth = textWindow.WindowWidth;
+        if (!allLines.ContainsKey(textWindow.Flower))
+        {
+            string text = frame.text;
+            originalLines = text.Split('\n');
+            for (int i = 0; i < originalLines.Length; i++)
+            {
+                string formatted = originalLines[i];
+                while (formatted.Length < resolutionWidth)
+                {
+                    formatted += " ";
+                }
+                originalLines[i] = formatted;
+            }
+        }
+        else
+        {
+            originalLines = allLines[textWindow.Flower];
+        }
+
+        currentLines = (string[])originalLines.Clone();
+        RefreshFrame();
+
+    }
+
+    private void TriggerWater()
+    {
+        //currentLines[cursorPos.y] = currentLines[cursorPos.y][..cursorPos.x] + "water" + currentLines[cursorPos.y][(cursorPos.x + cursorLength)..];
     }
 
     private void Flicker()
@@ -81,7 +129,7 @@ public class textController : MonoBehaviour
 
     private void TriggerDown()
     {
-        if (cursorPos.y < currentLines.Length - 1)
+        if (cursorPos.y < currentLines.Length - 3 - bottomBorder)
         {
             cursorPos.y += 1;
         }
@@ -123,21 +171,25 @@ public class textController : MonoBehaviour
         {
             cursorOn = true;
             originalLines[cursorPos.y] = originalLines[cursorPos.y][..cursorPos.x] + new StringBuilder().Insert(0, " ", cursorLength).ToString() + originalLines[cursorPos.y][(cursorPos.x + cursorLength)..];
+            DFS2(cursorPos.x - 1, cursorPos.y);
+            DFS2(cursorPos.x + cursorLength, cursorPos.y);
             for (int i = 0; i < cursorLength; i++)
             {
                 if (originalLines[cursorPos.y - 1][cursorPos.x + i].ToString() != " ")
                 {
                     DFS(cursorPos.x + i, cursorPos.y - 1);
-                    RefreshFrame();
-                    return;
+                    break;
                 }
             }
+            //GlobalData.chosen = textWindow.Flower;
+            collected.Add(textWindow.Flower);
+            RefreshFrame();
         }
     }
 
     private void DFS(int x, int y)
     {
-        if (x < 0 || x >= resolutionWidth - 1 || y < 1 || y >= currentLines.Length - 1 || originalLines[y][x].ToString() == " ")
+        if (x < 0 || x >= resolutionWidth - 1 || y < 1 || y > currentLines.Length - 1 - bottomBorder || originalLines[y][x].ToString() == " ")
         {
             return;
         }
@@ -150,9 +202,21 @@ public class textController : MonoBehaviour
             DFS(x, y - 1);
             DFS(x, y + 1);
         }
-
     }
-
+    private void DFS2(int x, int y)
+    {
+        if (x < 0 || x >= resolutionWidth - 1 || y < 1 || y >= currentLines.Length - 1 - bottomBorder || originalLines[y][x].ToString() == " ")
+        {
+            return;
+        }
+        else
+        {
+            originalLines[y] = originalLines[y][..x] + " " + originalLines[y][(x + 1)..];
+            //transfer to other grid
+            DFS2(x - 1, y);
+            DFS2(x + 1, y);
+        }
+    }
     private void RefreshFrame()
     {
         currentLines = (string[])originalLines.Clone();
@@ -165,6 +229,10 @@ public class textController : MonoBehaviour
             currentLines[cursorPos.y] = currentLines[cursorPos.y][..cursorPos.x] + new StringBuilder().Insert(0, " ", cursorLength).ToString() + currentLines[cursorPos.y][(cursorPos.x + cursorLength)..];
             //currentLines[cursorPos.y] = currentLines[cursorPos.y][..resolutionWidth];
         }
+        if (collected != null) { currentLines[^1] = "Collected Grafts: " + string.Join(", ", collected); }
         frame.text = string.Join("\n", currentLines);
+        allLines[textWindow.Flower] = originalLines;
+        //go to scene if 3 grafts collected
+
     }
 }
