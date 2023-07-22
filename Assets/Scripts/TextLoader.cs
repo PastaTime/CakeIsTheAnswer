@@ -1,12 +1,18 @@
-﻿using TMPro;
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(TextMeshProUGUI))]
+[RequireComponent(typeof(RectTransform))]
 public class TextLoader : MonoBehaviour
 {
     [SerializeField] private TextAsset filePath;
     [SerializeField] private int fontSize;
     [SerializeField] private int fontWidth;
+    [SerializeField] private float typeSpeed = 0.1f;
     private TextMeshProUGUI _tmpText;
+    private RectTransform _rectTransform;
     public int FontHeight
     {
         get => (int)_tmpText.fontSize;
@@ -33,15 +39,41 @@ public class TextLoader : MonoBehaviour
     void Awake()
     {
         _tmpText = GetComponent<TextMeshProUGUI>();
+        _rectTransform = GetComponent<RectTransform>();
 
         FontWidth = fontWidth;
         FontHeight = fontSize;
 
-        LoadFile(filePath); //example
+        StartCoroutine(TypeWrite(filePath.text, KeyCode.Return));
     }
-
-    public void LoadFile(TextAsset file)
+    
+    private IEnumerator TypeWrite(string text, KeyCode key)
     {
-        Text = file.text;
+        var left = 0;
+        var right = 0;
+        while (right < text.Length)
+        {
+            if (_tmpText.isTextOverflowing && text[right] == '\n')
+            {
+                Text = text[left..right] + "\n\nPress ENTER to Continue";
+                yield return waitForKeyPress(key);
+                left = right;
+            }
+            else if (text[right] == '\n')
+                yield return new WaitForSeconds(0.5f);
+
+                
+            right++;
+            Text = text[left..right];
+            yield return new WaitForSeconds(typeSpeed);
+        }
+    }
+    
+    private IEnumerator waitForKeyPress(KeyCode key)
+    {
+        while (!Input.GetKeyDown(key))
+        {
+            yield return null;
+        }
     }
 }
