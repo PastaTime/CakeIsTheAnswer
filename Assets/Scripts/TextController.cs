@@ -127,7 +127,7 @@ public class textController : MonoBehaviour
 
     private void TriggerDown()
     {
-        if (cursorPos.y < currentLines.Length - 1)
+        if (cursorPos.y < currentLines.Length - 2)
         {
             cursorPos.y += 1;
         }
@@ -196,7 +196,6 @@ public class textController : MonoBehaviour
             DFS(x, y - 1);
             DFS(x, y + 1);
         }
-
     }
 
     private void RefreshFrame()
