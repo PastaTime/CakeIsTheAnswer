@@ -4,5 +4,8 @@ using System.Collections.Generic;
 
 public static class GlobalData
 {
-    public static List<string[]> allLines = new();
+    public static Dictionary<string, string[]> allLines = new();
+    public static List<string> desired;
+    public static List<string> collected = new();
+
 }

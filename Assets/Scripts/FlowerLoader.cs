@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using System.IO;
-
+using System.Text.RegularExpressions;
 [RequireComponent(typeof(TextMeshProUGUI))]
 [RequireComponent(typeof(RectTransform))]
 public class FlowerLoader : MonoBehaviour
@@ -13,7 +13,7 @@ public class FlowerLoader : MonoBehaviour
     private TextMeshProUGUI _tmpText;
     private RectTransform _rectTransform;
     string[] txtFiles;
-
+    string flower;
     private int index = 0;
     public int FontHeight
     {
@@ -21,10 +21,7 @@ public class FlowerLoader : MonoBehaviour
         set => _tmpText.fontSize = value;
     }
 
-    public int Index
-    {
-        get => index;
-    }
+
     public int Files
     {
         get => txtFiles.Length;
@@ -42,6 +39,10 @@ public class FlowerLoader : MonoBehaviour
     public int WindowWidth
     {
         get => (int)windowSize.x;
+    }
+    public string Flower
+    {
+        get => flower;
     }
 
     public int WindowHeight
@@ -93,6 +94,7 @@ public class FlowerLoader : MonoBehaviour
         //string text = File.ReadAllText(file);
         StreamReader reader = new StreamReader(filePath);
         Text = reader.ReadToEnd();
+        flower = Path.GetFileName(filePath);
     }
     public void Next(int dir)
     {
