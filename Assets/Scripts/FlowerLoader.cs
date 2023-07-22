@@ -1,22 +1,34 @@
 using System;
 using TMPro;
 using UnityEngine;
+using System.IO;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 [RequireComponent(typeof(RectTransform))]
 public class FlowerLoader : MonoBehaviour
 {
-    [SerializeField] private TextAsset filePath;
+    private string folderPath = "Assets/Prefabs/Ruixin";
     [SerializeField] private Vector2 fontResolution;
     [SerializeField] private Vector2 windowSize;
     private TextMeshProUGUI _tmpText;
     private RectTransform _rectTransform;
+    string[] txtFiles;
+
+    private int index = 0;
     public int FontHeight
     {
         get => (int)_tmpText.fontSize;
         set => _tmpText.fontSize = value;
     }
 
+    public int Index
+    {
+        get => index;
+    }
+    public int Files
+    {
+        get => txtFiles.Length;
+    }
     private int _fontWidth;
     public int FontWidth
     {
@@ -65,11 +77,36 @@ public class FlowerLoader : MonoBehaviour
         AsciiRows = (int)windowSize.x;
         AsciiColumns = (int)windowSize.y;
 
-        LoadFile(filePath); //example
+        //LoadFile(txtFiles[0]); //example
+
+        ScanFolderForTxtFiles(folderPath);
+        LoadFile(txtFiles[index]);
+    }
+    void ScanFolderForTxtFiles(string path)
+    {
+        //     txtFiles = DirectoryInfo(path, "*.txt");
+        txtFiles = Directory.GetFiles(folderPath, "*.txt");
+
+    }
+    public void LoadFile(String filePath)
+    {
+        //string text = File.ReadAllText(file);
+        StreamReader reader = new StreamReader(filePath);
+        Text = reader.ReadToEnd();
+    }
+    public void Next(int dir)
+    {
+        //string text = File.ReadAllText(file);
+        index = (index + dir) % txtFiles.Length;
+        if (index < 0) { index = txtFiles.Length - 1; };
+        LoadFile(txtFiles[index]);
     }
 
-    public void LoadFile(TextAsset file)
-    {
-        Text = file.text;
-    }
+    // public void Back()
+    // {
+    //     //string text = File.ReadAllText(file);
+    //     if (index == 0) { index = txtFiles.Length - 1; }
+    //     else { index--; }
+    //     LoadFile(txtFiles[index]);
+    // }
 }

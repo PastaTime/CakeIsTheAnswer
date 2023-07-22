@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using TMPro;
 using System.Text;
+using static GlobalData;
 
 public class textController : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class textController : MonoBehaviour
     private float cursorTimer;
     //private bool haltInput;
     private bool cursorOn = true;
-    private float waitTime = 0.1f;
+    private float waitTime = 0.15f;
     private float cursorWaitTime = 0.5f;
     private string cursor = "_";
     private int cursorLength = 5;
@@ -27,12 +28,18 @@ public class textController : MonoBehaviour
     private KeyCode down = KeyCode.DownArrow;
     private KeyCode left = KeyCode.LeftArrow;
     private KeyCode up = KeyCode.UpArrow;
-    private KeyCode delete = KeyCode.Delete;
+    private KeyCode delete = KeyCode.Backspace;
+    private KeyCode water = KeyCode.W;
+    private KeyCode next = KeyCode.Q;
+    private KeyCode back = KeyCode.E;
+
 
     private string[] originalLines;
     private string[] currentLines;
     void Start()
     {
+        for (int i = 0; i < textWindow.Files; i++)
+        { allLines.Add(null); }
         resolutionWidth = textWindow.WindowWidth;
         string text = frame.text;
         originalLines = text.Split('\n');
@@ -58,15 +65,54 @@ public class textController : MonoBehaviour
         cursorTimer += Time.deltaTime;
         if (timer > waitTime)
         {
-            if (Input.GetKey(down)) { TriggerDown(); }
-            else if (Input.GetKey(left)) { TriggerLeft(); }
-            else if (Input.GetKey(right)) { TriggerRight(); }
-            else if (Input.GetKey(up)) { TriggerUp(); }
-            else if (Input.GetKey(delete)) { TriggerDelete(); }
+            if (Input.GetKey(down)) { TriggerDown(); timer = 0f; }
+            else if (Input.GetKey(left)) { TriggerLeft(); timer = 0f; }
+            else if (Input.GetKey(right)) { TriggerRight(); timer = 0f; }
+            else if (Input.GetKey(up)) { TriggerUp(); timer = 0f; }
+            else if (Input.GetKey(delete)) { TriggerDelete(); timer = 0f; }
+            else if (Input.GetKey(water)) { TriggerWater(); timer = 0f; }
+            else if (Input.GetKey(next)) { SaveImage(); LoadNewImage(-1); timer = 0f; }
+            else if (Input.GetKey(back)) { SaveImage(); LoadNewImage(1); timer = 0f; }
             else { Flicker(); }
-            timer = 0f;
         }
         //        }
+    }
+
+    private void SaveImage()
+    {
+        allLines[textWindow.Index] = originalLines;
+    }
+
+    private void LoadNewImage(int dir)
+    {
+        textWindow.Next(dir);
+        resolutionWidth = textWindow.WindowWidth;
+        if (allLines[textWindow.Index] == null)
+        {
+            string text = frame.text;
+            originalLines = text.Split('\n');
+        }
+        else
+        {
+            originalLines = allLines[textWindow.Index];
+        }
+        for (int i = 0; i < originalLines.Length; i++)
+        {
+            string formatted = originalLines[i];
+            while (formatted.Length < resolutionWidth)
+            {
+                formatted += " ";
+            }
+            originalLines[i] = formatted;
+        }
+        currentLines = (string[])originalLines.Clone();
+        RefreshFrame();
+
+    }
+
+    private void TriggerWater()
+    {
+        //currentLines[cursorPos.y] = currentLines[cursorPos.y][..cursorPos.x] + "water" + currentLines[cursorPos.y][(cursorPos.x + cursorLength)..];
     }
 
     private void Flicker()
@@ -166,5 +212,6 @@ public class textController : MonoBehaviour
             //currentLines[cursorPos.y] = currentLines[cursorPos.y][..resolutionWidth];
         }
         frame.text = string.Join("\n", currentLines);
+        allLines[textWindow.Index] = originalLines;
     }
 }
