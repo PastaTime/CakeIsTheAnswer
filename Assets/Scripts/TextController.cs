@@ -263,7 +263,6 @@ public class textController : MonoBehaviour
             currentLines[cursorPos.y] = currentLines[cursorPos.y][..cursorPos.x] + new StringBuilder().Insert(0, " ", cursorLength).ToString() + currentLines[cursorPos.y][(cursorPos.x + cursorLength)..];
             //currentLines[cursorPos.y] = currentLines[cursorPos.y][..resolutionWidth];
         }
-
         if (collected != null) { currentLines[^1] = "Collected Grafts: " + string.Join(", ", collected); }
         frame.text = string.Join("\n", currentLines);
         allLines[textWindow.Flower] = originalLines;
