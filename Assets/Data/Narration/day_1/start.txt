@@ -42,4 +42,9 @@ Grietje looks at the roses in the corner, and then looks up towards the ceiling,
 You look to the leather-bound journal on the shelf next to you, it had the meanings of all the different flowers noted down. It must have been the property of the previous Florist, but regardless it was a godsend for someone inexperienced like yourself.
 
 
-Press ENTER to browse your inventory start cutting. Assess the meaning behind each flower and then choose three flowers to make the bouquet that best suits the customer.
+Browse your inventory and start cutting. Assess the meaning behind each flower and then choose three flowers to make the bouquet that best suits the customer.
+
+<b>Q and E to navigate your inventory</b>
+<b>Arrow keys to position cursor</b>
+<b>Backspace to cut</b>
+<b>Press ENTER to continue</b>
