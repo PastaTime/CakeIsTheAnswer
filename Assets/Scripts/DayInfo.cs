@@ -8,6 +8,8 @@ public class DayInfo : MonoBehaviour
     public TextAsset dayStart;
     public List <TextAsset> dayEnd = new();
 
+    public Songs dayStartSong;
+    public Songs dayEndSong;
     public string GetDayEndByCount(int count)
     {
         Debug.Log("SEARCHING FOR DAY END");

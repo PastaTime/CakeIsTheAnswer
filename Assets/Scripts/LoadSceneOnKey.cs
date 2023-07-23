@@ -12,6 +12,10 @@ public class LoadSceneOnKey : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(key))
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Menus/MenuConfirm");
             SceneManager.LoadScene(SceneName);
+
+        }
     }
 }

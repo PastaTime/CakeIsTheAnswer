@@ -47,10 +47,17 @@ public class TextLoader : MonoBehaviour
             Text = filePath.text;
         else
             StartCoroutine(TypeWrite( KeyCode.Return));
+
+        if (_manager.state == GameState.DayStart)
+            _manager.PlaySong(_manager.days[_manager.dayNumber].dayStartSong);
+        else if (_manager.state == GameState.DayEnd)
+            _manager.PlaySong(_manager.days[_manager.dayNumber].dayEndSong);
+
     }
 
     private IEnumerator TypeWrite(KeyCode key)
     {
+        var count = 0;
         var text = _manager.GetNarration();
         Debug.Log("TEXT:" + text);
         var left = 0;
@@ -61,12 +68,28 @@ public class TextLoader : MonoBehaviour
             {
                 Text = text[left..right] + "\n\nPress ENTER to Continue";
                 yield return WaitForKeyPress(key);
+                //Enter Key
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Menus/MenuConfirm");
                 left = right;
             }
             else if (text[right] == '\n')
-                yield return new WaitForSeconds(0.5f);
+            {
+                count++;
+                Debug.Log("New Line: " + count);
 
-                
+                if (count == 2)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/TypeWriterDing");
+                }
+                //DING
+                yield return new WaitForSeconds(0.5f);
+            }
+            else
+            {
+                count = 0;
+            }
+
+
             right++;
             Text = text[left..right];
             yield return new WaitForSeconds(typeSpeed);
