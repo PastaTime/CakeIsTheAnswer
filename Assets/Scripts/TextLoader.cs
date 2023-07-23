@@ -51,8 +51,6 @@ public class TextLoader : MonoBehaviour
 
     private IEnumerator TypeWrite(KeyCode key)
     {
-        yield return new WaitForSeconds(2f);
-
         var text = _manager.GetNarration();
         Debug.Log("TEXT:" + text);
         var left = 0;

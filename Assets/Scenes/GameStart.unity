@@ -721,7 +721,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   desired:
-  - 
+  - Red_Rose
+  - Blue_Iris
+  - Forget_Me_Not
   dayStart: {fileID: 4900000, guid: 0975b2be1c4646c48e09b0a3fdc6ddba, type: 3}
   dayEnd:
   - {fileID: 4900000, guid: fc349700057a4bd79c5201dd46e57b7b, type: 3}
@@ -881,7 +883,6 @@ MonoBehaviour:
   desired: []
   collected: []
   state: 0
-  awaken: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
