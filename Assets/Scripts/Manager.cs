@@ -76,6 +76,7 @@ public class Manager : MonoBehaviour
                 print("Grafting State: " + state + " Day Number: " + dayNumber);
                 return;
             case GameState.Grafting:
+                desired = days[dayNumber].desired;
                 state = GameState.DayEnd;
                 SceneManager.LoadScene("Narration");
                 print("DayEnd ... State: " + state + " Day Number: " + dayNumber);

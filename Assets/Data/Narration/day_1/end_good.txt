@@ -18,7 +18,6 @@ Greitje comes right up to the counter, her eyes betraying her excitement.
 
 You reveal the bouquet out from underneath.
 
-[Some correct]
 <b>Grietje: That’s beautiful! It’ll do the trick! Thank you!</b>
 
 You hand the bouquet over to Grietje.

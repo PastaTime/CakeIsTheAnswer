@@ -464,7 +464,7 @@ MonoBehaviour:
   filePath: {fileID: 4900000, guid: 12f9166ee205486780de5da70fa2e25f, type: 3}
   fontSize: 8
   fontWidth: 7
-  typeSpeed: 0.005
+  typeSpeed: 0.001
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
