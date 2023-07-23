@@ -100,7 +100,16 @@ public class Manager : MonoBehaviour
             case GameState.DayEnd:
                 dayNumber++;
                 state = GameState.DayStart;
-                SceneManager.LoadScene("Narration");
+                if (dayNumber == 2)
+                {
+                    SceneManager.LoadScene("ArtScene");
+
+                }
+                else
+                {
+                    SceneManager.LoadScene("Narration");
+
+                }
                 print("Done ... State: " + state + " Day Number: " + dayNumber);
                 return;
             default:

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GraftingGame.unity
     guid: 3f415fadd6e2b344d81e2105c1118cc5
+  - enabled: 1
+    path: Assets/Scenes/ArtScene.unity
+    guid: 397955b5bfd8e9c419b0b863880ec88e
   m_configObjects: {}
