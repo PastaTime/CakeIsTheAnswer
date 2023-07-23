@@ -1,1 +1,11 @@
-Day 3 start
+<b>You: What were they like?</b>
+
+<b>Bas: Loyal.</b>
+
+You think for a bit. Bas glances back briefly. The sheen in his eyes betray his true feelings.
+
+<b>Bas: So can you do it?</b>
+
+<b>You: Yes.</b>
+
+You open up your journal.
