@@ -69,7 +69,6 @@ public class TextLoader : MonoBehaviour
                 Text = text[left..right] + "\n\nPress ENTER to Continue";
                 yield return WaitForKeyPress(key);
                 //Enter Key
-                FMODUnity.RuntimeManager.PlayOneShot("event:/Menus/MenuConfirm");
                 left = right;
             }
             else if (text[right] == '\n')
@@ -79,7 +78,7 @@ public class TextLoader : MonoBehaviour
 
                 if (count == 2)
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/TypeWriterDing");
+                    //DING
                 }
                 //DING
                 yield return new WaitForSeconds(0.5f);

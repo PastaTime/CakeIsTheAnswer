@@ -77,8 +77,8 @@ public class TextController : MonoBehaviour
                 else if (Input.GetKey(right)) { TriggerRight(); timer = 0f; }
                 else if (Input.GetKey(up)) { TriggerUp(); timer = 0f; }
                 else if (Input.GetKey(delete)) { TriggerDelete(); timer = 0f; }
-                else if (Input.GetKey(next)) { SaveImage(); LoadNewImage(-1); timer = 0f; FMODUnity.RuntimeManager.PlayOneShot("event:/Menus/MenuQ"); }
-                else if (Input.GetKey(back)) { SaveImage(); LoadNewImage(1); timer = 0f; FMODUnity.RuntimeManager.PlayOneShot("event:/Menus/MenuE"); }
+                else if (Input.GetKey(next)) { SaveImage(); LoadNewImage(-1); timer = 0f; }
+                else if (Input.GetKey(back)) { SaveImage(); LoadNewImage(1); timer = 0f;  }
                 else { Flicker(); }
             }
         }
@@ -133,7 +133,6 @@ public class TextController : MonoBehaviour
         if (cursorPos.y < currentLines.Length - 3 - bottomBorder)
         {
             cursorPos.y += 1;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Menus/MenuDown");
         }
         cursorOn = true;
         RefreshFrame();
@@ -144,7 +143,6 @@ public class TextController : MonoBehaviour
         if (cursorPos.x > 0)
         {
             cursorPos.x -= step;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Menus/MenuLeft");
         }
         cursorOn = true;
         RefreshFrame();
@@ -155,7 +153,6 @@ public class TextController : MonoBehaviour
         if (cursorPos.x < resolutionWidth - 1 - cursorLength - step)
         { 
             cursorPos.x += step;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Menus/MenuRight");
         }
         cursorOn = true;
         RefreshFrame();
@@ -166,7 +163,6 @@ public class TextController : MonoBehaviour
         if (cursorPos.y > 1)
         {
             cursorPos.y -= 1;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Menus/MenuUp");
         }
         cursorOn = true;
         RefreshFrame();
@@ -186,9 +182,7 @@ public class TextController : MonoBehaviour
                 {
                     DFS(cursorPos.x + i, cursorPos.y - 1);
                     _manager.collected.Add(textWindow.Flower);
-
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/Sisscorsnip");
-
+                    
                     RefreshFrame();
                     haltInput = true;
                     //add

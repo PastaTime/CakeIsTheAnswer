@@ -32,31 +32,10 @@ public class Manager : MonoBehaviour
 
     public GameState state = GameState.DayStart;
 
-
-    public static FMOD.Studio.EventInstance song1;
-    public static FMOD.Studio.EventInstance song2;
-    public static FMOD.Studio.EventInstance song3;
-    public static FMOD.Studio.EventInstance song4;
-    public static FMOD.Studio.EventInstance song5;
-    public static FMOD.Studio.EventInstance song6;
-    public static FMOD.Studio.EventInstance song7;
-
-    public Songs CurrentSong = Songs.Song1;
-
-
+    public List<AudioClip> songs = new();
+    
     public bool ReadyToChangeState { get; set; } = false;
-
-    private void Start()
-    {
-       song1 = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Goodflower120bpm");
-       song2 = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Goodflower120bpm");
-       song3 = FMODUnity.RuntimeManager.CreateInstance("event:/Music/Goodflower140bpm");
-       song4 = FMODUnity.RuntimeManager.CreateInstance("event:/Music/A Peculiar Customer");
-       song5 = FMODUnity.RuntimeManager.CreateInstance("event:/Music/A Peculiar Customer");
-       song6 = FMODUnity.RuntimeManager.CreateInstance("event:/Music/A Peculiar Customer");
-       song7 = FMODUnity.RuntimeManager.CreateInstance("event:/Music/TheRitual");
-    }
-
+    
     // Start is called before the first frame update
     void Awake() 
     {
@@ -80,57 +59,6 @@ public class Manager : MonoBehaviour
 
     public void PlaySong(Songs song)
     {
-        switch(CurrentSong)
-        {
-            case Songs.Song1:
-                song1.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                break;
-            case Songs.Song2:
-                song2.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                break;
-            case Songs.Song3:
-                song3.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                break;
-            case Songs.Song4:
-                song4.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                break;
-            case Songs.Song5:
-                song5.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                break;
-            case Songs.Song6:
-                song6.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                break;
-            case Songs.Song7:
-                song7.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                break;
-        }
-
-        CurrentSong = song;
-
-        switch (song)
-        {
-            case Songs.Song1:
-                song1.start();
-                break;
-            case Songs.Song2:
-                song2.start();
-                break;
-            case Songs.Song3:
-                song3.start();
-                break;
-            case Songs.Song4:
-                song4.start();
-                break;
-            case Songs.Song5:
-                song5.start();
-                break;
-            case Songs.Song6:
-                song6.start();
-                break;
-            case Songs.Song7:
-                song7.start();
-                break;
-        }
     }
 
     public string GetNarration()
