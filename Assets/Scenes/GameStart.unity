@@ -326,7 +326,6 @@ GameObject:
   - component: {fileID: 747508800}
   - component: {fileID: 747508799}
   - component: {fileID: 747508801}
-  - component: {fileID: 747508802}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -466,22 +465,6 @@ MonoBehaviour:
   fontSize: 8
   fontWidth: 7
   typeSpeed: 0.005
---- !u!114 &747508802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 747508796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79c135967b8286f49ba0bf77dd1d0de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  days: []
-  dayNumber: 1
-  desired: []
-  collected: []
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,6 +880,8 @@ MonoBehaviour:
   dayNumber: 0
   desired: []
   collected: []
+  state: 0
+  awaken: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -15,25 +15,21 @@ public class Manager : MonoBehaviour
 {
     public List<DayInfo> days = new();
 
-    public Dictionary<string, string[]> AllLines;
+
     public int dayNumber = 0;
-    public List<string> desired;
-    public List<string> collected;
+    public List<string> desired = new();
+    public List<string> collected = new();
 
-    public GameState State { get; set; } = GameState.DayStart;
-
+    public GameState state = GameState.DayStart;
+    
     public bool ReadyToChangeState { get; set; } = false;
     
     // Start is called before the first frame update
     void Awake() 
     {
-        Debug.Log("MANAGER AWAKE");
+        Debug.Log("AWAKEN");
         DontDestroyOnLoad(gameObject);
         var dayObjects = FindObjectsOfType<DayInfo>();
-        foreach (var g in dayObjects)
-        {
-            Debug.Log(g.name);
-        }
         days = dayObjects.OrderBy(x => x.name).ToList();
     }
 
@@ -51,9 +47,8 @@ public class Manager : MonoBehaviour
 
     public string GetNarration()
     {
-        Debug.Log(days);
         var day = days[dayNumber];
-        switch (State)
+        switch (state)
         {
             case GameState.DayStart:
                 return day.dayStart.text;
@@ -70,22 +65,26 @@ public class Manager : MonoBehaviour
         return collected.Count(x => hashSet.Contains(x));
     }
 
-    private void UpdateDay()
+    public void UpdateDay()
     {
-        switch (State)
+        print("Updating ... State: " + state + " Day Number: " + dayNumber);
+        switch (state)
         {
             case GameState.DayStart:
+                state = GameState.Grafting;
                 SceneManager.LoadScene("GraftingGame");
-                State = GameState.Grafting;
+                print("Grafting State: " + state + " Day Number: " + dayNumber);
                 return;
             case GameState.Grafting:
+                state = GameState.DayEnd;
                 SceneManager.LoadScene("Narration");
-                State = GameState.DayEnd;
+                print("DayEnd ... State: " + state + " Day Number: " + dayNumber);
                 return;
             case GameState.DayEnd:
-                SceneManager.LoadScene("Narration");
                 dayNumber++;
-                State = GameState.DayStart;
+                state = GameState.DayStart;
+                SceneManager.LoadScene("Narration");
+                print("Done ... State: " + state + " Day Number: " + dayNumber);
                 return;
             default:
                 throw new ArgumentOutOfRangeException();

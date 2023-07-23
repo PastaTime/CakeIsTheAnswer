@@ -3,7 +3,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(Manager))]
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class TextLoader : MonoBehaviour
 {
@@ -40,8 +39,7 @@ public class TextLoader : MonoBehaviour
     void Awake()
     {
         _tmpText = GetComponent<TextMeshProUGUI>();
-        _manager = GetComponent<Manager>();
-        GetComponent<RectTransform>();
+        _manager = FindObjectOfType<Manager>();
 
         FontWidth = fontWidth;
         FontHeight = fontSize;

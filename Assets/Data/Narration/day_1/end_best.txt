@@ -1,1 +1,37 @@
-﻿Day 1 Best
+﻿You trim a bit here, and a bit there. You’re still not too sure about this part, but it feels like it’s looking right.
+
+You arrange the different parts to the best of your aesthetic ability, until you come to a design that you’re satisfied with.
+
+You step back, and take a few more looks at the arrangement of flowers before you. It’s not exactly a masterpiece, but it is much improved compared to your last attempt. Either way, they would all be taken to the gardens behind the town hall eventually, the festival preparations were in full swing.
+
+You return to the front of the store with the freshly-arranged bouquet, locking the door behind you. You see Grietje talking to Gwen outside, the last rays of the setting sun outlines their silhouettes.
+
+You hide it under the counter just in case.
+
+Greitje sees you through the store window, and makes an excuse to leave. Gwen throws up her hands up and saunters away.
+
+The bell rings.
+
+Greitje comes right up to the counter, her eyes betraying her excitement.
+
+<b>Greitje: So? Do you have it?</b>
+
+You reveal the bouquet out from underneath.
+
+<b>Greitje: Great Goedebloem that is perfect! I knew you were the right one for the job! Thank you so much!</b>
+
+You hand the bouquet over to Grietje.
+She hands you your payment, and then she turns to leave the shop. Just when her hand touches the door, she remembers something and glances back at you.
+
+<b>Greitje: I’ll be doing something tomorrow night, but would you like to join us for supper tonight?</b>
+
+Greitje and Gwen would often invite you over for supper. You were never quite sure why they’d be so kind to a stranger like yourself, but it might be due to their friendship with the previous Florist.
+
+<b>You: Sure. I’ll head over once I’m done closing up.</b>
+
+Greitje smiles, and continues on her way.
+
+You return to your workspace in the back room, and start to mop things up. Flowers are good fun to work on, but cleaning up the trimmings afterwards certainly wasn’t.
+Regardless, you do your duty and clean the room to the best of your ability.
+
+After changing out of your work clothes and washing the muck out of your hands, you head over to the Grocers’ for supper.
