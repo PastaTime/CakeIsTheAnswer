@@ -1,1 +1,48 @@
-﻿Day 2 Bad
+﻿Martijn blankly stares at the bouquet.
+
+<b>Martijn: Well… I suppose the town could mean different things to different people. Still, I thank you for your effort.</b>
+
+Martijn pays you, and leaves the shop.
+
+Before even his shadow was out of view, another customer rings through.
+
+It was Bas, the barber, from the other shop next-door. A middle-aged man who also doubled as the town's surgeon, was someone you did not want to get on the wrong side of.
+He rarely socialised with anyone in town, and tended to keep to himself. He hates jokes, and metaphors even more, in other words, he prefers to be straight to the point.
+
+You feel a shiver run down your spine as Bas' perpetually cantankerous stare meets your eyes.
+
+<b>You: Welcome. Is there anything I can help you with?</b>
+
+Bas doesn't reply. Instead he looks around the shop some more. Eyeing the different kinds of flowers one by one, as if they were street punks who had just looked at him funny.
+
+<b>You: Sir?</b>
+
+Bas turns to you. You can feel his temper starting up.
+
+<b>Bas: Do not SIR me. You know your place in this town. Do your job.</b>
+
+He looks at you expectantly. You are not sure what to give him that won't upset him, so you reluctantly ask him for more details.
+
+<b>You: I'm sorry. Is there a specific occasion you're preparing for?</b>
+
+Bas again turns to look at the flowers, as if he's trying to avoid answering the question. It is rare for Bas to beat around the bush like this, the last time he came in the only thing he said was “Black Rose” and nothing else.
+
+<b>You: Do you want another Black Rose?</b>
+
+Bas almost blows up, you can see the fury in his eyes.
+
+<b>Bas: BLACK ROSE!? AN INSULT!! A CURSE!! HOW DARE YOU!!</b>
+
+Just as you prepare to run into the back room and lock yourself inside, you notice a momentary tinge of sorrow flash across his face. You remembered what Grietje told you the night before, that Bas was not able to attend her wedding due to a tragedy that befell him on the same day.
+
+You rephrase the question.
+
+<b>You: I'm so sorry. You wanted to honour someone?</b>
+
+He turns his back on you, and looks out into the town square. He grunts… Positively?
+
+<b>You: And they are someone you loved?</b>
+
+<b>Bas: Wife and daughter.</b>
+
+His back still turned.
