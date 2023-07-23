@@ -25,4 +25,4 @@
                    Y7                 
 ------------Black_Rose------------------
 -----------Death, negativity------------
-
+Q:Back      Backspace:Cut      E:Forward

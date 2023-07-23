@@ -25,4 +25,4 @@
                    Y7                 
 ---------------Red_Rose-----------------
 --------Love, passion, romance----------
-
+Q:Back      Backspace:Cut      E:Forward

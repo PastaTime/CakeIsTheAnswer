@@ -25,4 +25,4 @@
                       :^         
 -------------Tall_Poppy-----------------
 -------Arrogance, pride, fortune--------
-
+Q:Back      Backspace:Cut      E:Forward

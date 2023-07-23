@@ -25,4 +25,4 @@
                    Y7                 
 ---------------White_Rose---------------
 -----------Purity, innocence------------
-
+Q:Back      Backspace:Cut      E:Forward

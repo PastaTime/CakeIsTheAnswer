@@ -25,4 +25,4 @@
                     7!            
 -------------Forget_Me_Not--------------
 --Intelligence, remembrance, memories---
-
+Q:Back      Backspace:Cut      E:Forward

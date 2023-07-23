@@ -25,4 +25,4 @@
                  !:JP^~P           !JJP
 --------------Brown_Iris----------------
 -----------Courage, passion-------------
-
+Q:Back      Backspace:Cut      E:Forward
