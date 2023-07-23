@@ -42,7 +42,7 @@ public class FlowerLoader : MonoBehaviour
     }
     public string Flower
     {
-        get => flower;
+        get => Path.GetFileNameWithoutExtension(flower);
     }
 
     public int WindowHeight

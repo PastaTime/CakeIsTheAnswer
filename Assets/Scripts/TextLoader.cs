@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-[RequireComponent(typeof(RectTransform))]
 public class TextLoader : MonoBehaviour
 {
     [SerializeField] private TextAsset filePath;
@@ -12,7 +11,8 @@ public class TextLoader : MonoBehaviour
     [SerializeField] private int fontWidth;
     [SerializeField] private float typeSpeed = 0.1f;
     private TextMeshProUGUI _tmpText;
-    private RectTransform _rectTransform;
+    private Manager _manager;
+
     public int FontHeight
     {
         get => (int)_tmpText.fontSize;
@@ -39,16 +39,20 @@ public class TextLoader : MonoBehaviour
     void Awake()
     {
         _tmpText = GetComponent<TextMeshProUGUI>();
-        _rectTransform = GetComponent<RectTransform>();
+        _manager = FindObjectOfType<Manager>();
 
         FontWidth = fontWidth;
         FontHeight = fontSize;
-
-        StartCoroutine(TypeWrite(filePath.text, KeyCode.Return));
+        if (filePath != null)
+            Text = filePath.text;
+        else
+            StartCoroutine(TypeWrite( KeyCode.Return));
     }
-    
-    private IEnumerator TypeWrite(string text, KeyCode key)
+
+    private IEnumerator TypeWrite(KeyCode key)
     {
+        var text = _manager.GetNarration();
+        Debug.Log("TEXT:" + text);
         var left = 0;
         var right = 0;
         while (right < text.Length)
@@ -56,7 +60,7 @@ public class TextLoader : MonoBehaviour
             if (_tmpText.isTextOverflowing && text[right] == '\n')
             {
                 Text = text[left..right] + "\n\nPress ENTER to Continue";
-                yield return waitForKeyPress(key);
+                yield return WaitForKeyPress(key);
                 left = right;
             }
             else if (text[right] == '\n')
@@ -67,9 +71,11 @@ public class TextLoader : MonoBehaviour
             Text = text[left..right];
             yield return new WaitForSeconds(typeSpeed);
         }
+
+        _manager.ReadyToChangeState = true;
     }
     
-    private IEnumerator waitForKeyPress(KeyCode key)
+    private IEnumerator WaitForKeyPress(KeyCode key)
     {
         while (!Input.GetKeyDown(key))
         {

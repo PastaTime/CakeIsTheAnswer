@@ -4,14 +4,16 @@ using UnityEngine;
 using System;
 using TMPro;
 using System.Text;
-using static GlobalData;
 
-public class textController : MonoBehaviour
+public class TextController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private TextMeshProUGUI frame;
-
+    
     [SerializeField] private FlowerLoader textWindow;
+    [SerializeField] private Manager _manager;
+    
+    private Dictionary<string, string[]> AllLines = new();
     private int resolutionWidth;
     private float timer;
     private float cursorTimer;
@@ -23,22 +25,26 @@ public class textController : MonoBehaviour
     private int cursorLength = 5;
     private Vector2Int cursorPos = new Vector2Int(0, 1);
     private int step = 4;
-
+    
     private KeyCode right = KeyCode.RightArrow;
     private KeyCode down = KeyCode.DownArrow;
     private KeyCode left = KeyCode.LeftArrow;
     private KeyCode up = KeyCode.UpArrow;
     private KeyCode delete = KeyCode.Backspace;
-    private KeyCode water = KeyCode.W;
     private KeyCode next = KeyCode.Q;
     private KeyCode back = KeyCode.E;
-
+    
     private int bottomBorder = 3;
     private string[] originalLines;
     private string[] currentLines;
-
+    private bool haltInput = false;
+    
     void Start()
     {
+        _manager = FindObjectOfType<Manager>();
+        _manager.collected.Clear();
+        
+        Debug.Log("FOUND: " +  _manager);
         // for (int i = 0; i < textWindow.Files; i++)
         // { allLines.Add(null); }
         resolutionWidth = textWindow.WindowWidth;
@@ -56,39 +62,39 @@ public class textController : MonoBehaviour
         currentLines = (string[])originalLines.Clone();
         RefreshFrame();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
-        //        if (!haltInput)
-        //        {
-        timer += Time.deltaTime;
-        cursorTimer += Time.deltaTime;
-        if (timer > waitTime)
+        if (!haltInput)
         {
-            if (Input.GetKey(down)) { TriggerDown(); timer = 0f; }
-            else if (Input.GetKey(left)) { TriggerLeft(); timer = 0f; }
-            else if (Input.GetKey(right)) { TriggerRight(); timer = 0f; }
-            else if (Input.GetKey(up)) { TriggerUp(); timer = 0f; }
-            else if (Input.GetKey(delete)) { TriggerDelete(); timer = 0f; }
-            else if (Input.GetKey(water)) { TriggerWater(); timer = 0f; }
-            else if (Input.GetKey(next)) { SaveImage(); LoadNewImage(-1); timer = 0f; }
-            else if (Input.GetKey(back)) { SaveImage(); LoadNewImage(1); timer = 0f; }
-            else { Flicker(); }
+            timer += Time.deltaTime;
+            cursorTimer += Time.deltaTime;
+            if (timer > waitTime)
+            {
+                if (Input.GetKey(down)) { TriggerDown(); timer = 0f; }
+                else if (Input.GetKey(left)) { TriggerLeft(); timer = 0f; }
+                else if (Input.GetKey(right)) { TriggerRight(); timer = 0f; }
+                else if (Input.GetKey(up)) { TriggerUp(); timer = 0f; }
+                else if (Input.GetKey(delete)) { TriggerDelete(); timer = 0f; }
+                else if (Input.GetKey(next)) { SaveImage(); LoadNewImage(-1); timer = 0f; }
+                else if (Input.GetKey(back)) { SaveImage(); LoadNewImage(1); timer = 0f; }
+                else { Flicker(); }
+            }
         }
-        //        }
     }
-
+    
     private void SaveImage()
     {
-        allLines[textWindow.Flower] = originalLines;
+        
+        AllLines[textWindow.Flower] = originalLines;
     }
-
+    
     private void LoadNewImage(int dir)
     {
         textWindow.Next(dir);
         resolutionWidth = textWindow.WindowWidth;
-        if (!allLines.ContainsKey(textWindow.Flower))
+        if (!AllLines.ContainsKey(textWindow.Flower))
         {
             string text = frame.text;
             originalLines = text.Split('\n');
@@ -104,17 +110,12 @@ public class textController : MonoBehaviour
         }
         else
         {
-            originalLines = allLines[textWindow.Flower];
+            originalLines = AllLines[textWindow.Flower];
         }
-
+    
         currentLines = (string[])originalLines.Clone();
         RefreshFrame();
-
-    }
-
-    private void TriggerWater()
-    {
-        //currentLines[cursorPos.y] = currentLines[cursorPos.y][..cursorPos.x] + "water" + currentLines[cursorPos.y][(cursorPos.x + cursorLength)..];
+    
     }
 
     private void Flicker()
@@ -126,7 +127,7 @@ public class textController : MonoBehaviour
             cursorTimer = 0f;
         }
     }
-
+    
     private void TriggerDown()
     {
         if (cursorPos.y < currentLines.Length - 3 - bottomBorder)
@@ -136,7 +137,7 @@ public class textController : MonoBehaviour
         cursorOn = true;
         RefreshFrame();
     }
-
+    
     private void TriggerLeft()
     {
         if (cursorPos.x > 0)
@@ -146,7 +147,7 @@ public class textController : MonoBehaviour
         cursorOn = true;
         RefreshFrame();
     }
-
+    
     private void TriggerRight()
     {
         if (cursorPos.x < resolutionWidth - 1 - cursorLength - step)
@@ -154,7 +155,7 @@ public class textController : MonoBehaviour
         cursorOn = true;
         RefreshFrame();
     }
-
+    
     private void TriggerUp()
     {
         if (cursorPos.y > 1)
@@ -164,10 +165,10 @@ public class textController : MonoBehaviour
         cursorOn = true;
         RefreshFrame();
     }
-
+    
     private void TriggerDelete()
     {
-        if (cursorPos.y > 1)
+        if (cursorPos.y > 1 && !_manager.collected.Contains(textWindow.Flower))
         {
             cursorOn = true;
             originalLines[cursorPos.y] = originalLines[cursorPos.y][..cursorPos.x] + new StringBuilder().Insert(0, " ", cursorLength).ToString() + originalLines[cursorPos.y][(cursorPos.x + cursorLength)..];
@@ -178,15 +179,52 @@ public class textController : MonoBehaviour
                 if (originalLines[cursorPos.y - 1][cursorPos.x + i].ToString() != " ")
                 {
                     DFS(cursorPos.x + i, cursorPos.y - 1);
+                    _manager.collected.Add(textWindow.Flower);
+                    RefreshFrame();
+                    haltInput = true;
+                    //add
+                    AddMutation();
+                    StartCoroutine(PauseCoroutine());
+                    //RefreshFrame();
+                    //remove
+                    haltInput = false;
+                    
+                    if (_manager.collected.Count == 3)
+                    {
+                        _manager.UpdateDay();
+                    }
+                    
                     break;
                 }
+    
             }
-            //GlobalData.chosen = textWindow.Flower;
-            collected.Add(textWindow.Flower);
-            RefreshFrame();
         }
     }
-
+    
+    private void AddMutation()
+    {
+        List<char> chars = new() { 'G', 'R', 'O', 'W', 'T', 'H' };
+        for (int i = 0; i < 10; i++)
+        {
+            int randomY = UnityEngine.Random.Range(0, currentLines.Length - 2);
+            int randomX = UnityEngine.Random.Range(0, resolutionWidth - 2);
+            char char_ = chars[UnityEngine.Random.Range(0, chars.Count)];
+            Debug.Log(randomY + " " + randomY);
+            currentLines[randomY] = currentLines[randomY][..randomX] + char_ + currentLines[randomY][(randomX + 1)..];
+    
+        }
+        frame.text = string.Join("\n", currentLines);
+    }
+    IEnumerator PauseCoroutine()
+    {
+        Debug.Log("Start of the coroutine");
+    
+        // Pause for 2 seconds
+        yield return new WaitForSeconds(2f);
+        RefreshFrame();
+        Debug.Log("Coroutine resumed after 2 seconds");
+    }
+    
     private void DFS(int x, int y)
     {
         if (x < 0 || x >= resolutionWidth - 1 || y < 1 || y > currentLines.Length - 1 - bottomBorder || originalLines[y][x].ToString() == " ")
@@ -229,10 +267,9 @@ public class textController : MonoBehaviour
             currentLines[cursorPos.y] = currentLines[cursorPos.y][..cursorPos.x] + new StringBuilder().Insert(0, " ", cursorLength).ToString() + currentLines[cursorPos.y][(cursorPos.x + cursorLength)..];
             //currentLines[cursorPos.y] = currentLines[cursorPos.y][..resolutionWidth];
         }
-        if (collected != null) { currentLines[^1] = "Collected Grafts: " + string.Join(", ", collected); }
+        if (_manager.collected != null) { currentLines[^1] = "Collected Grafts: " + string.Join(", ", _manager.collected); }
         frame.text = string.Join("\n", currentLines);
-        allLines[textWindow.Flower] = originalLines;
+        AllLines[textWindow.Flower] = originalLines;
         //go to scene if 3 grafts collected
-
     }
 }
