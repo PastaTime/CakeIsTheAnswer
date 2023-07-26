@@ -1,7 +1,13 @@
+<b>DAY TWO</b> 
+
 Supper last night was not too eventful, albeit a little awkward.
+
 It seemed that the conversation Greitje and Gwen had yesterday was about Gwen wanting to leave the town.
+
 You aren't fully up to date with their personal drama, but from what you've gathered, Gwen felt that this was her last chance to see the world.
+
 Greitje kept reassuring her that things will work out, that Goodflower will have everything they could ever need. Leaving now would squander all of the hard work and sacrifices that they've put into Goodflower so far.
+
 Gwen seemed to nod in agreement, but her demeanour said otherwise.
 
 These thoughts mulled in your head for a few moments, but now was the start of a new day and you had to get back to work.
@@ -10,7 +16,9 @@ There was only two days left before the festival, and orders have really started
 The bell rings.
 
 In comes a scraggly-looking man in his sixties, dressed in dirty old rags, and notably, walking on his bare feet.
+
 Though it may not look like it, but you are now in the presence of his eminence, the mayor of Goodflower, Martijn.
+
 You stand to attention, not sure how best to address him. He quickly waves you down.
 
 <b>Martijn: No, no! No need to do that for little ol' me. Relax!</b>
@@ -31,7 +39,7 @@ He thinks hard, wriggling his toes in deep deliberation.
 
 He turns and looks outside, observing the children playing in the town square.
 
-<b>Martijn: …And the future, how ever so bright it will be.</b>
+<b>Martijn: ...And the future, how ever so bright it will be.</b>
 
 He turns back to you.
 

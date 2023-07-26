@@ -10,7 +10,6 @@ public class AsciiConverter : MonoBehaviour
     public int width = 64;
     public int height = 64;
     public float pixelScale = 0.1f;
-    public float displayScale = 8.0f;
     public float fovScale = 0.02f;
     public float refreshRate = 1.0f/12.0f;
 
@@ -78,11 +77,15 @@ public class AsciiConverter : MonoBehaviour
 
     private void OnGUI()
     {
+        float trueScale =  Screen.height / (float)height;
+        float xo = (Screen.width * 0.5f) - (width * trueScale * 0.5f);
+        float yo = (Screen.height * 0.5f) - (height * trueScale * 0.5f);
+        
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                GUI.Label(new Rect(x * displayScale, y * displayScale, displayScale*2, displayScale*2), asciiLines[y][x]);
+                GUI.Label(new Rect((x * trueScale) + xo, (y * trueScale) + yo, trueScale*2, trueScale*2), asciiLines[y][x]);
             }
         }
     }

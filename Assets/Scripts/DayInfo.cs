@@ -18,6 +18,7 @@ public class DayInfo : MonoBehaviour
             case 3:
                 return dayEnd[0].text;
             case 2:
+                return dayEnd[1].text;
             case 1:
                 return dayEnd[1].text;
             case 0:

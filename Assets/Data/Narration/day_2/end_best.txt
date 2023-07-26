@@ -44,5 +44,3 @@ He turns his back on you, and looks out into the town square. He grunts… Posit
 <b>You: And they are someone you loved?</b>
 
 <b>Bas: Wife and daughter.</b>
-
-His back still turned.

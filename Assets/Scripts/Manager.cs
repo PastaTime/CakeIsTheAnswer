@@ -13,6 +13,7 @@ public enum Songs
     Song5,
     Song6,
     Song7,
+    Grafting
 }
 
 public enum GameState
@@ -35,6 +36,10 @@ public class Manager : MonoBehaviour
     public List<AudioClip> songs = new();
     
     public bool ReadyToChangeState { get; set; } = false;
+
+    public int totalContinuePresses = 0;
+    public AudioSource audioSource;
+    public bool wasRevealed;
     
     // Start is called before the first frame update
     void Awake() 
@@ -59,6 +64,12 @@ public class Manager : MonoBehaviour
 
     public void PlaySong(Songs song)
     {
+        Debug.Log("Playing song: " + song);
+        if ((int)song < songs.Count)
+        {
+            audioSource.clip = songs[(int)song];
+        }
+        audioSource.Play();
     }
 
     public string GetNarration()
@@ -87,8 +98,15 @@ public class Manager : MonoBehaviour
         switch (state)
         {
             case GameState.DayStart:
+                if (dayNumber == 3)
+                {
+                    SceneManager.LoadScene("ArtScene");
+                    audioSource.Stop();
+                    return;
+                }
                 state = GameState.Grafting;
                 SceneManager.LoadScene("GraftingGame");
+                PlaySong(Songs.Grafting);
                 print("Grafting State: " + state + " Day Number: " + dayNumber);
                 return;
             case GameState.Grafting:
@@ -100,16 +118,7 @@ public class Manager : MonoBehaviour
             case GameState.DayEnd:
                 dayNumber++;
                 state = GameState.DayStart;
-                if (dayNumber == 2)
-                {
-                    SceneManager.LoadScene("ArtScene");
-
-                }
-                else
-                {
-                    SceneManager.LoadScene("Narration");
-
-                }
+                SceneManager.LoadScene("Narration");
                 print("Done ... State: " + state + " Day Number: " + dayNumber);
                 return;
             default:
