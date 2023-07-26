@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.IO;
@@ -7,12 +8,13 @@ using System.Text.RegularExpressions;
 [RequireComponent(typeof(RectTransform))]
 public class FlowerLoader : MonoBehaviour
 {
-    private string folderPath = "Assets/Prefabs/Ruixin";
+    //private string folderPath = "Assets/Prefabs/Ruixin";
+    public List<TextAsset> flowerImageTexts = new();
     [SerializeField] private Vector2 fontResolution;
     [SerializeField] private Vector2 windowSize;
     private TextMeshProUGUI _tmpText;
     private RectTransform _rectTransform;
-    string[] txtFiles;
+    public List<string> txtFiles;
     string flower;
     private int index = 0;
     public int FontHeight
@@ -20,11 +22,10 @@ public class FlowerLoader : MonoBehaviour
         get => (int)_tmpText.fontSize;
         set => _tmpText.fontSize = value;
     }
-
-
+    
     public int Files
     {
-        get => txtFiles.Length;
+        get => txtFiles.Count;
     }
     private int _fontWidth;
     public int FontWidth
@@ -80,28 +81,31 @@ public class FlowerLoader : MonoBehaviour
 
         //LoadFile(txtFiles[0]); //example
 
-        ScanFolderForTxtFiles(folderPath);
-        LoadFile(txtFiles[index]);
+        //ScanFolderForTxtFiles(folderPath);
+        for (int i = 0; i < flowerImageTexts.Count; i++)
+        {
+            txtFiles.Add(flowerImageTexts[i].text);
+        }
+        LoadFile(index);
     }
     void ScanFolderForTxtFiles(string path)
     {
         //     txtFiles = DirectoryInfo(path, "*.txt");
-        txtFiles = Directory.GetFiles(folderPath, "*.txt");
+        //txtFiles = Directory.GetFiles(folderPath, "*.txt");
 
     }
-    public void LoadFile(String filePath)
+    public void LoadFile(int _index)
     {
-        //string text = File.ReadAllText(file);
-        StreamReader reader = new StreamReader(filePath);
-        Text = reader.ReadToEnd();
-        flower = Path.GetFileName(filePath);
+        //StreamReader reader = new StreamReader(filePath);
+        Text = txtFiles[_index];
+        flower = Path.GetFileName(flowerImageTexts[_index].name);
     }
     public void Next(int dir)
     {
         //string text = File.ReadAllText(file);
-        index = (index + dir) % txtFiles.Length;
-        if (index < 0) { index = txtFiles.Length - 1; };
-        LoadFile(txtFiles[index]);
+        index = (index + dir) % txtFiles.Count;
+        if (index < 0) { index = txtFiles.Count - 1; };
+        LoadFile(index);
     }
 
     // public void Back()

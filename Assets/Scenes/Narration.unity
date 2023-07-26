@@ -574,7 +574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2676817148818869866, guid: b8c07117258d8f3489ebe64b87051e75, type: 3}
       propertyPath: typeSpeed
-      value: 0.02
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2676817148818869866, guid: b8c07117258d8f3489ebe64b87051e75, type: 3}
       propertyPath: acceptClip

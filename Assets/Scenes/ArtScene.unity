@@ -1252,7 +1252,6 @@ MonoBehaviour:
   width: 160
   height: 90
   pixelScale: 0.01
-  displayScale: 12
   fovScale: 0.01
   refreshRate: 0.08333334
 --- !u!95 &1713179520
@@ -1300,6 +1299,12 @@ PlayableDirector:
   - key: {fileID: 2099139746698037230, guid: e12f1587d0f5743418f67b45ece5bbc9, type: 2}
     value: {fileID: 0}
   - key: {fileID: 5549598953501448924, guid: e12f1587d0f5743418f67b45ece5bbc9, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -2959326484854413051, guid: e12f1587d0f5743418f67b45ece5bbc9, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3138280998333886639, guid: e12f1587d0f5743418f67b45ece5bbc9, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7628174398681694670, guid: e12f1587d0f5743418f67b45ece5bbc9, type: 2}
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
