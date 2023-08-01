@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using TMPro;
 using System.Text;
+using Random = UnityEngine.Random;
 
 public class TextController : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class TextController : MonoBehaviour
     
     [SerializeField] private FlowerLoader textWindow;
     [SerializeField] private Manager _manager;
+
+    // Sounds
+    public AudioSource audioSource;
+    public List<AudioClip> forwardClips;
+    public List<AudioClip> backwardClips;
+    public List<AudioClip> scissorClips;
     
     private Dictionary<string, string[]> AllLines = new();
     private int resolutionWidth;
@@ -93,6 +100,15 @@ public class TextController : MonoBehaviour
     private void LoadNewImage(int dir)
     {
         textWindow.Next(dir);
+        if (dir >= 0)
+        {
+            audioSource.clip = forwardClips[Random.Range(0, forwardClips.Count)];
+        }
+        else
+        {
+            audioSource.clip = backwardClips[Random.Range(0, backwardClips.Count)];
+        }
+        audioSource.Play();
         resolutionWidth = textWindow.WindowWidth;
         if (!AllLines.ContainsKey(textWindow.Flower))
         {
@@ -191,7 +207,8 @@ public class TextController : MonoBehaviour
                     //RefreshFrame();
                     //remove
                     haltInput = false;
-                    
+                    audioSource.clip = scissorClips[Random.Range(0,scissorClips.Count)];
+                    audioSource.Play();
                     if (_manager.collected.Count == 3)
                     {
                         _manager.UpdateDay();

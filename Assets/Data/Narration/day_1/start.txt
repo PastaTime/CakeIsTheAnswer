@@ -1,3 +1,5 @@
+<b>DAY ONE</b> 
+
 The flower shop, with its white-washed facade adorned with cascading ivy and window boxes overflowing with colourful blooms, stood as a beacon of beauty and tranquillity in the quaint, secluded town of Goodflower.
 
 The soft chime of a bell announced the arrival of a visitor as they stepped through the wooden door, greeted by a captivating dance of fragrances that filled the air.
@@ -29,6 +31,7 @@ You lean in closer.
 <b>Grietje: My Gwen has been feeling a bit down lately, and our anniversary is tomorrow, so perhaps I could surprise her with a nice bouquet.</b>
 
 She pauses, and thinks for a bit.
+
 <b>Grietje: I want to show her my love of course, but also reassure her that things will work out. She does worry a lot, especially with the festival coming up.</b>
 
 She looks at you expectantly.
@@ -41,10 +44,10 @@ Grietje looks at the roses in the corner, and then looks up towards the ceiling,
 
 You look to the leather-bound journal on the shelf next to you, it had the meanings of all the different flowers noted down. It must have been the property of the previous Florist, but regardless it was a godsend for someone inexperienced like yourself.
 
-
-Browse your inventory and start cutting. Assess the meaning behind each flower and then choose three flowers to make the bouquet that best suits the customer.
+<b>You browse your inventory and start cutting.</b> 
+<b>Assess the meaning behind each flower and then choose three flowers to make the bouquet that best suits the customer.</b> 
 
 <b>Q and E to navigate your inventory</b>
-<b>Arrow keys to position cursor</b>
-<b>Backspace to cut</b>
-<b>Press ENTER to continue</b>
+<b>ARROW keys to position cursor</b>
+<b>BACKSPACE to trim</b>
+<b>ENTER to continue</b>
