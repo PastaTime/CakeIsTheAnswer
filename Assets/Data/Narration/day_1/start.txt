@@ -1,5 +1,7 @@
 <b>DAY ONE</b> 
-
+{PLAY: dark_vision}
+{CHARACTER: typewriter}
+{EFFECT: menu_q}
 The flower shop, with its white-washed facade adorned with cascading ivy and window boxes overflowing with colourful blooms, stood as a beacon of beauty and tranquillity in the quaint, secluded town of Goodflower.
 
 The soft chime of a bell announced the arrival of a visitor as they stepped through the wooden door, greeted by a captivating dance of fragrances that filled the air.

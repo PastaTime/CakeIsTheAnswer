@@ -77,7 +77,7 @@ public class TextLoader : MonoBehaviour
     {
         var count = 0;
         var text = _manager.GetNarration();
-        Debug.Log("TEXT:" + text);  
+        Debug.Log("TEXT:" + text);   
         var left = 0;
         var right = 0;
         while (right < text.Length)
