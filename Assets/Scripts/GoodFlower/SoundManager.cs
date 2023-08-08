@@ -11,21 +11,19 @@ namespace GoodFlower
         [SerializeField] private AudioSource source;
         [SerializeField] private SoundBank soundBank;
 
-        private void Start()
+
+        private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             source = GetComponent<AudioSource>();
             soundBank = GetComponent<SoundBank>();
             source.loop = true;
         }
 
-        private void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-
 
         public override void PlayBackgroundMusic(string songName)
         {
+            Debug.Log($"Play Music: {songName}");
             if (songName == "")
                 return;
 
@@ -35,6 +33,7 @@ namespace GoodFlower
 
         public override void PlaySoundEffect(string songName)
         {
+            Debug.Log($"Play Sound: {songName}");
             if (songName == "")
                 return;
 

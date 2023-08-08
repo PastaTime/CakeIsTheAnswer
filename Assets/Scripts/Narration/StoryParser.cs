@@ -13,6 +13,7 @@ namespace Narration
 
         private int startIndex = 0;
         private int endIndex = 0;
+        private float typeAudioCooldown = 0f;
 
         private const string CommandRegex = "{.*}";
         private const string PressToContinue = "\n\n<b>Press {0} to Continue</b>";
@@ -27,14 +28,14 @@ namespace Narration
             this.manager = manager;
             this.textMesh = textMesh;
             this.story = story;
-            startIndex = 0;
-            endIndex = 0;
         }
 
         public string CurrentCharacter { get; set; } = "";
         public string CurrentNewlineSound { get; set; } = "";
 
         public float TypeSpeed { get; set; } = 0.01f;
+
+        public float TypeAudioSpeed { get; set; } = 0.5f;
 
 
         public IEnumerator Reader(KeyCode continueKey)
@@ -43,7 +44,15 @@ namespace Narration
             while (endIndex < story.Length)
             {
                 textMesh.text = ReadNext();
-                manager.PlaySoundEffect(CurrentCharacter);
+
+                typeAudioCooldown -= Time.deltaTime;
+                if (typeAudioCooldown < 0)
+                {
+                    manager.PlaySoundEffect(CurrentCharacter);
+                    typeAudioCooldown = TypeAudioSpeed;
+                }
+
+
 
                 if (textMesh.isTextOverflowing && story[endIndex] == '\n')
                 {
@@ -102,7 +111,7 @@ namespace Narration
             }
         }
 
-        private IEnumerator WaitForKeyPress(KeyCode key)
+        private static IEnumerator WaitForKeyPress(KeyCode key)
         {
             while (!Input.GetKeyDown(key))
             {

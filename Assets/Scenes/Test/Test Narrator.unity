@@ -156,6 +156,8 @@ MonoBehaviour:
   text: {fileID: 1693426761}
   storyFile: {fileID: 4900000, guid: 0975b2be1c4646c48e09b0a3fdc6ddba, type: 3}
   narrationSpeed: 0.005
+  narrationAudioSpeed: 0.05
+  newLineSound: typewriter_ding
   continueKey: 13
 --- !u!4 &193652093
 Transform:
@@ -689,7 +691,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1693426761
 MonoBehaviour:
