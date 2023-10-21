@@ -6,3 +6,4 @@ You wake up staring at the ceiling. You look in the mirror and see a black bruis
 The work day ends once again. Tomorrow is the last day before the festival.
 
 You didn't want to bother Greitje and Gwen on their anniversary, so you heated up some leftover porridge for supper.
+{SCENE: Scenes/Narration}

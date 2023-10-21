@@ -21,26 +21,39 @@ Though it may not look like it, but you are now in the presence of his eminence,
 
 You stand to attention, not sure how best to address him. He quickly waves you down.
 
+{CHARACTER: martijn}
 <b>Martijn: No, no! No need to do that for little ol' me. Relax!</b>
+{CHARACTER: typewriter}
 
 You relax. He smiles.
 
+{CHARACTER: martijn}
 <b>Martijn: I'm just here for some flowers. I need a nice piece to present for the festival.</b>
+{CHARACTER: typewriter}
 
+{CHARACTER: florist}
 <b>You: Anything in particular you were thinking of?</b>
+{CHARACTER: typewriter}
 
 His smile opens even wider, revealing his less-than-complete set of teeth.
 
+{CHARACTER: martijn}
 <b>Martijn: I'm looking for something that represents the town well, the people well.</b>
+{CHARACTER: typewriter}
 
 He thinks hard, wriggling his toes in deep deliberation.
 
+{CHARACTER: martijn}
 <b>Martijn: Something that shows how hard we've all worked so far. Our gratitude for the land and the all the fresh produce it yields us.</b>
+{CHARACTER: typewriter}
 
 He turns and looks outside, observing the children playing in the town square.
 
+{CHARACTER: martijn}
 <b>Martijn: ...And the future, how ever so bright it will be.</b>
+{CHARACTER: typewriter}
 
 He turns back to you.
 
 You look in your journal.
+{SCENE: Scenes/GraftingGame}

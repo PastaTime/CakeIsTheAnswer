@@ -2,30 +2,34 @@
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Narration
 {
     public class StoryParser
     {
-        private readonly BaseSoundManager manager;
+        private readonly BaseSoundManager soundManager;
         private readonly TextMeshProUGUI textMesh;
         private readonly string story;
 
         private int startIndex = 0;
         private int endIndex = 0;
         private float typeAudioCooldown = 0f;
-
+        private KeyCode continueKey;
+        
         private const string CommandRegex = "{.*}";
         private const string PressToContinue = "\n\n<b>Press {0} to Continue</b>";
+        
 
 
         private const string PlayCommand = "PLAY";
         private const string CharacterCommand = "CHARACTER";
         private const string EffectCommand = "EFFECT";
+        private const string LoadSceneCommand = "SCENE";
 
-        public StoryParser(BaseSoundManager manager, TextMeshProUGUI textMesh, string story)
+        public StoryParser(BaseSoundManager soundManager, TextMeshProUGUI textMesh, string story)
         {
-            this.manager = manager;
+            this.soundManager = soundManager;
             this.textMesh = textMesh;
             this.story = story;
         }
@@ -38,34 +42,33 @@ namespace Narration
         public float TypeAudioSpeed { get; set; } = 0.5f;
 
 
-        public IEnumerator Reader(KeyCode continueKey)
+        public IEnumerator Reader(KeyCode continueKeyCode)
         {
+            continueKey = continueKeyCode;
             var keyName = continueKey.ToString();
             while (endIndex < story.Length)
             {
-                textMesh.text = ReadNext();
-
+                yield return DisplayNext();
                 typeAudioCooldown -= Time.deltaTime;
                 if (typeAudioCooldown < 0)
                 {
-                    manager.PlaySoundEffect(CurrentCharacter);
+                    soundManager.PlaySoundEffect(CurrentCharacter);
                     typeAudioCooldown = TypeAudioSpeed;
                 }
-
-
+                
 
                 if (textMesh.isTextOverflowing && story[endIndex] == '\n')
                 {
                     textMesh.text += string.Format(PressToContinue, keyName);
                     yield return WaitForKeyPress(continueKey);
-                    manager.PlaySoundEffect(CurrentNewlineSound);
+                    soundManager.PlaySoundEffect(CurrentNewlineSound);
                     startIndex = endIndex;
                 }
                 yield return new WaitForSeconds(TypeSpeed);
             }
         }
 
-        private string ReadNext()
+        private IEnumerator DisplayNext()
         {
             switch (story[endIndex++])
             {
@@ -73,11 +76,11 @@ namespace Narration
                     ReadUntil('>');
                     break;
                 case '{':
-                    ProcessNarrationCommand();
+                    yield return ProcessNarrationCommand();
                     break;
             }
 
-            return Regex.Replace(story[startIndex..endIndex], CommandRegex, "");
+            textMesh.text = Regex.Replace(story[startIndex..endIndex], CommandRegex, "");
         }
 
         private void ReadUntil(char character)
@@ -86,7 +89,7 @@ namespace Narration
                 endIndex++;
         }
 
-        private void ProcessNarrationCommand()
+        private IEnumerator ProcessNarrationCommand()
         {
             var start = endIndex;
             ReadUntil('}');
@@ -98,7 +101,7 @@ namespace Narration
             switch (directive)
             {
                 case PlayCommand:
-                    manager.PlayBackgroundMusic(argument);
+                    soundManager.PlayBackgroundMusic(argument);
                     break;
 
                 case CharacterCommand:
@@ -106,7 +109,14 @@ namespace Narration
                     break;
 
                 case EffectCommand:
-                    manager.PlaySoundEffect(argument);
+                    soundManager.PlaySoundEffect(argument);
+                    break;
+                
+                case LoadSceneCommand:
+                    textMesh.text += string.Format(PressToContinue, continueKey);
+                    yield return WaitForKeyPress(continueKey);
+                    soundManager.PlaySoundEffect(CurrentNewlineSound);
+                    SceneManager.LoadScene(argument);
                     break;
             }
         }

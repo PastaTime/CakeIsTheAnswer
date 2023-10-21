@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 193652093}
-  - component: {fileID: 193652092}
+  - component: {fileID: 193652094}
   m_Layer: 0
   m_Name: Narrator
   m_TagString: Untagged
@@ -140,25 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &193652092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193652091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2254ea7635e14445a7cf8b4652b6007d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  text: {fileID: 1693426761}
-  storyFile: {fileID: 4900000, guid: 0975b2be1c4646c48e09b0a3fdc6ddba, type: 3}
-  narrationSpeed: 0.005
-  narrationAudioSpeed: 0.05
-  newLineSound: typewriter_ding
-  continueKey: 13
 --- !u!4 &193652093
 Transform:
   m_ObjectHideFlags: 0
@@ -174,6 +155,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &193652094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193652091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24130beeac2c409f9200a444db004597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
+  text: {fileID: 1693426761}
+  narrationSpeed: 0.005
+  narrationAudioSpeed: 0.01
+  newLineSound: typewriter_ding
+  continueKey: 13
+  file: {fileID: 4900000, guid: 0975b2be1c4646c48e09b0a3fdc6ddba, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 4
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
