@@ -1,3 +1,4 @@
+{PLAY: a_peculiar_customer}
 {CHARACTER: florist}
 <b>You: What were they like?</b>
 {CHARACTER: typewriter}

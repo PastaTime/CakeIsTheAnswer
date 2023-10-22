@@ -1,10 +1,14 @@
-﻿Martijn looks at your creation, then tears start welling up in his eyes. He smiles a smile wider than he ever has smiled, and before you could stop him, he jumps over the counter to give you the hug of your life.
+﻿{CHARACTER: typewriter}
+{PLAY: goodflower}
+Martijn looks at your creation, then tears start welling up in his eyes. He smiles a smile wider than he ever has smiled, and before you could stop him, he jumps over the counter to give you the hug of your life.
 
 {CHARACTER: martijn}
 <b>Martijn: You! You are a part of this town, and don't you ever forget that! This is beyond perfect! Goodflower will finally bloom, and the entire world will get to see it!</b>
 {CHARACTER: typewriter}
 
 Martijn pays you, and leaves the shop.
+{EFFECT: door_latch}
+{PLAY: a_peculiar_customer}
 
 Before even his shadow was out of view, another customer rings through.
 

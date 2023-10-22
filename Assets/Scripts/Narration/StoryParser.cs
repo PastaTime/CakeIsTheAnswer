@@ -17,11 +17,8 @@ namespace Narration
         private float typeAudioCooldown = 0f;
         private KeyCode continueKey;
         
-        private const string CommandRegex = "{.*}";
+        private const string CommandRegex = @"{.*}(\r\n|\r|\n)";
         private const string PressToContinue = "\n\n<b>Press {0} to Continue</b>";
-        
-
-
         private const string PlayCommand = "PLAY";
         private const string CharacterCommand = "CHARACTER";
         private const string EffectCommand = "EFFECT";
@@ -93,8 +90,9 @@ namespace Narration
         {
             var start = endIndex;
             ReadUntil('}');
-
+            
             var command = story[start..(endIndex - 1)];
+
             var parameters = command.Split(':');
             var directive = parameters[0].ToUpper();
             var argument = parameters[1].Trim();

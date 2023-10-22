@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using TMPro;
 using System.Text;
+using GoodFlower;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class TextController : MonoBehaviour
@@ -13,6 +15,7 @@ public class TextController : MonoBehaviour
     
     [SerializeField] private FlowerLoader textWindow;
     [SerializeField] private Manager _manager;
+    [SerializeField] private SoundManager _soundManager;
 
     // Sounds
     public AudioSource audioSource;
@@ -49,6 +52,7 @@ public class TextController : MonoBehaviour
     void Start()
     {
         _manager = FindObjectOfType<Manager>();
+        _soundManager = FindObjectOfType<SoundManager>();
         _manager.collected.Clear();
         
         Debug.Log("FOUND: " +  _manager);
@@ -73,22 +77,33 @@ public class TextController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!haltInput)
+        if (haltInput) return;
+        
+        timer += Time.deltaTime;
+        cursorTimer += Time.deltaTime;
+            
+        if (!(timer > waitTime)) return;
+            
+        if (Input.GetKey(down)) { TriggerDown(); timer = 0f; }
+        else if (Input.GetKey(left)) { TriggerLeft(); timer = 0f; }
+        else if (Input.GetKey(right)) { TriggerRight(); timer = 0f; }
+        else if (Input.GetKey(up)) { TriggerUp(); timer = 0f; }
+        else if (Input.GetKey(delete)) { TriggerDelete(); timer = 0f; }
+        else if (Input.GetKey(next))
         {
-            timer += Time.deltaTime;
-            cursorTimer += Time.deltaTime;
-            if (timer > waitTime)
-            {
-                if (Input.GetKey(down)) { TriggerDown(); timer = 0f; }
-                else if (Input.GetKey(left)) { TriggerLeft(); timer = 0f; }
-                else if (Input.GetKey(right)) { TriggerRight(); timer = 0f; }
-                else if (Input.GetKey(up)) { TriggerUp(); timer = 0f; }
-                else if (Input.GetKey(delete)) { TriggerDelete(); timer = 0f; }
-                else if (Input.GetKey(next)) { SaveImage(); LoadNewImage(-1); timer = 0f; }
-                else if (Input.GetKey(back)) { SaveImage(); LoadNewImage(1); timer = 0f;  }
-                else { Flicker(); }
-            }
+            SaveImage(); 
+            LoadNewImage(-1); 
+            _soundManager.PlaySoundEffect("menu_forward"); 
+            timer = 0f;
         }
+        else if (Input.GetKey(back))
+        {
+            SaveImage(); 
+            LoadNewImage(1);
+            _soundManager.PlaySoundEffect("menu_back"); 
+            timer = 0f;
+        }
+        else { Flicker(); }
     }
     
     private void SaveImage()
@@ -151,6 +166,7 @@ public class TextController : MonoBehaviour
             cursorPos.y += 1;
         }
         cursorOn = true;
+        _soundManager.PlaySoundEffect("minigame_movement");
         RefreshFrame();
     }
     
@@ -161,6 +177,7 @@ public class TextController : MonoBehaviour
             cursorPos.x -= step;
         }
         cursorOn = true;
+        _soundManager.PlaySoundEffect("minigame_movement");
         RefreshFrame();
     }
     
@@ -171,6 +188,7 @@ public class TextController : MonoBehaviour
             cursorPos.x += step;
         }
         cursorOn = true;
+        _soundManager.PlaySoundEffect("minigame_movement");
         RefreshFrame();
     }
     
@@ -181,6 +199,7 @@ public class TextController : MonoBehaviour
             cursorPos.y -= 1;
         }
         cursorOn = true;
+        _soundManager.PlaySoundEffect("minigame_movement");
         RefreshFrame();
     }
     
@@ -192,31 +211,30 @@ public class TextController : MonoBehaviour
             originalLines[cursorPos.y] = originalLines[cursorPos.y][..cursorPos.x] + new StringBuilder().Insert(0, " ", cursorLength).ToString() + originalLines[cursorPos.y][(cursorPos.x + cursorLength)..];
             DFS2(cursorPos.x - 1, cursorPos.y);
             DFS2(cursorPos.x + cursorLength, cursorPos.y);
-            for (int i = 0; i < cursorLength; i++)
+            for (var i = 0; i < cursorLength; i++)
             {
-                if (originalLines[cursorPos.y - 1][cursorPos.x + i].ToString() != " ")
+                if (originalLines[cursorPos.y - 1][cursorPos.x + i].ToString() == " ") continue;
+                
+                DFS(cursorPos.x + i, cursorPos.y - 1);
+                _manager.collected.Add(textWindow.Flower);
+                    
+                RefreshFrame();
+                haltInput = true;
+                //add
+                AddMutation();
+                StartCoroutine(PauseCoroutine());
+                //RefreshFrame();
+                //remove
+                haltInput = false;
+                audioSource.clip = scissorClips[Random.Range(0,scissorClips.Count)];
+                audioSource.Play();
+                if (_manager.collected.Count == 3)
                 {
-                    DFS(cursorPos.x + i, cursorPos.y - 1);
-                    _manager.collected.Add(textWindow.Flower);
-                    
-                    RefreshFrame();
-                    haltInput = true;
-                    //add
-                    AddMutation();
-                    StartCoroutine(PauseCoroutine());
-                    //RefreshFrame();
-                    //remove
-                    haltInput = false;
-                    audioSource.clip = scissorClips[Random.Range(0,scissorClips.Count)];
-                    audioSource.Play();
-                    if (_manager.collected.Count == 3)
-                    {
-                        _manager.UpdateDay();
-                    }
-                    
-                    break;
+                    SceneManager.LoadScene("Narration");
                 }
-    
+                    
+                break;
+
             }
         }
     }
@@ -224,25 +242,21 @@ public class TextController : MonoBehaviour
     private void AddMutation()
     {
         List<char> chars = new() { 'G', 'R', 'O', 'W', 'T', 'H' };
-        for (int i = 0; i < 10; i++)
+        for (var i = 0; i < 10; i++)
         {
-            int randomY = UnityEngine.Random.Range(0, currentLines.Length - 2);
-            int randomX = UnityEngine.Random.Range(0, resolutionWidth - 2);
-            char char_ = chars[UnityEngine.Random.Range(0, chars.Count)];
-            Debug.Log(randomY + " " + randomY);
+            var randomY = Random.Range(0, currentLines.Length - 2);
+            var randomX = Random.Range(0, resolutionWidth - 2);
+            var char_ = chars[Random.Range(0, chars.Count)];
             currentLines[randomY] = currentLines[randomY][..randomX] + char_ + currentLines[randomY][(randomX + 1)..];
-    
         }
         frame.text = string.Join("\n", currentLines);
+        
+        _soundManager.PlaySoundEffect("scissor");
     }
     IEnumerator PauseCoroutine()
     {
-        Debug.Log("Start of the coroutine");
-    
-        // Pause for 2 seconds
         yield return new WaitForSeconds(2f);
         RefreshFrame();
-        Debug.Log("Coroutine resumed after 2 seconds");
     }
     
     private void DFS(int x, int y)

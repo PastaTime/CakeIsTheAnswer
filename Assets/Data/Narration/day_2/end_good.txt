@@ -1,10 +1,14 @@
-﻿Martijn looks at the bouquet. He smiles.
+﻿{CHARACTER: typewriter}
+{PLAY: goodflower}
+Martijn looks at the bouquet. He smiles.
 
 {CHARACTER: martijn}
 <b>Martijn: It's not quite what I had in mind, but this will work! Thank you</b>
 {CHARACTER: typewriter}
 
 Martijn pays you, and leaves the shop.
+{EFFECT: door_latch}
+{PLAY: a_peculiar_customer}
 
 Before even his shadow was out of view, another customer rings through.
 

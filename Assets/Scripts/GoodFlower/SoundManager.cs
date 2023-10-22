@@ -12,6 +12,8 @@ namespace GoodFlower
         [SerializeField] private SoundBank soundBank;
 
 
+        private string CurrentlyPlayingClip => source.clip != null ? source.clip.name : "";
+
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
@@ -23,8 +25,7 @@ namespace GoodFlower
 
         public override void PlayBackgroundMusic(string songName)
         {
-            Debug.Log($"Play Music: {songName}");
-            if (songName == "")
+            if (songName == "" || CurrentlyPlayingClip.Equals(songName))
                 return;
 
             source.clip = soundBank.GetSoundByName(songName);
@@ -33,7 +34,6 @@ namespace GoodFlower
 
         public override void PlaySoundEffect(string songName)
         {
-            Debug.Log($"Play Sound: {songName}");
             if (songName == "")
                 return;
 

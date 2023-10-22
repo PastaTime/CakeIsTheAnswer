@@ -1,4 +1,6 @@
-﻿You trim a bit here, and a bit there. You’re still not too sure about this part, but it feels like it’s looking right.
+﻿{CHARACTER: typewriter}
+{PLAY: goodflower}
+You trim a bit here, and a bit there. You’re still not too sure about this part, but it feels like it’s looking right.
 
 You arrange the different parts to the best of your aesthetic ability, until you come to a design that you’re satisfied with.
 

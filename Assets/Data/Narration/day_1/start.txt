@@ -1,8 +1,10 @@
 {CHARACTER: typewriter}
+{PLAY: goodflower_slow}
 <b>DAY ONE</b> 
-{PLAY: dark_vision}
+
 The flower shop, with its white-washed facade adorned with cascading ivy and window boxes overflowing with colourful blooms, stood as a beacon of beauty and tranquillity in the quaint, secluded town of Goodflower.
 
+{EFFECT: door_latch}
 The soft chime of a bell announced the arrival of a visitor as they stepped through the wooden door, greeted by a captivating dance of fragrances that filled the air.
 
 It has only been a couple of weeks since you first arrived in town, but as their new Florist you were quickly able to gain the acceptance of the locals, and in turn, their patronage.

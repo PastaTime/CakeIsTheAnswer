@@ -10,6 +10,7 @@ namespace GoodFlower
         protected override void Awake()
         {
             manager = FindObjectOfType<Manager>();
+            manager.TransitionState();
             base.Awake();
         }
         protected override string GetStory()

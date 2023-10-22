@@ -1,4 +1,6 @@
-﻿Bas takes a single glance at the arrangement and collapses into a wail of tears. This was a side of him that you never thought you or anyone would ever get to see.
+﻿{CHARACTER: typewriter}
+{PLAY: a_peculiar_customer}
+Bas takes a single glance at the arrangement and collapses into a wail of tears. This was a side of him that you never thought you or anyone would ever get to see.
 
 {CHARACTER: bas}
 <b>Bas: I'm sorry… I'm sorry for everything… I should have spent more time with you both. All my time was spent trying to grow that damned plant. No amount of prosperity can ever be worth it… </b>

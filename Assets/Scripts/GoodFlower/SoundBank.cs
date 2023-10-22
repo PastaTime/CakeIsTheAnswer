@@ -55,7 +55,7 @@ namespace GoodFlower
         {
             var clip = Sounds.FirstOrDefault(s => s.Name == soundName)?.File;
 
-            if (clip is null)
+             if (clip is null)
                 throw new FileNotFoundException($"'{soundName}' is not registered in the Sound Bank.");
 
             return clip;

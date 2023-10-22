@@ -1,4 +1,6 @@
-﻿Bas looks at your creation.
+﻿{CHARACTER: typewriter}
+{PLAY: a_peculiar_customer}
+Bas looks at your creation.
 
 He sighs. Gives you your payment without another word, then leaves the shop.
 

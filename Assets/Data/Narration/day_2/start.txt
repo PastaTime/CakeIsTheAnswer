@@ -1,3 +1,5 @@
+{CHARACTER: typewriter}
+{PLAY: goodflower}
 <b>DAY TWO</b> 
 
 Supper last night was not too eventful, albeit a little awkward.
@@ -13,6 +15,7 @@ Gwen seemed to nod in agreement, but her demeanour said otherwise.
 These thoughts mulled in your head for a few moments, but now was the start of a new day and you had to get back to work.
 There was only two days left before the festival, and orders have really started to ramp up.
 
+{EFFECT: door_latch}
 The bell rings.
 
 In comes a scraggly-looking man in his sixties, dressed in dirty old rags, and notably, walking on his bare feet.
