@@ -1,4 +1,6 @@
-﻿Bas sees the arrangement before him, then he looks back at you.
+﻿{CHARACTER: typewriter}
+{PLAY: a_peculiar_customer}
+Bas sees the arrangement before him, then he looks back at you.
 Before you could even realise what's happening, your vision goes blank.
 
 You wake up staring at the ceiling. You look in the mirror and see a black bruise across the side of your head. Neither Bas nor his order was anywhere to be seen, however the payment for it was still left on your counter.
@@ -6,3 +8,4 @@ You wake up staring at the ceiling. You look in the mirror and see a black bruis
 The work day ends once again. Tomorrow is the last day before the festival.
 
 You didn't want to bother Greitje and Gwen on their anniversary, so you heated up some leftover porridge for supper.
+{SCENE: Scenes/Narration}

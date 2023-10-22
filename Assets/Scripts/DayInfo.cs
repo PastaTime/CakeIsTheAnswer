@@ -12,7 +12,6 @@ public class DayInfo : MonoBehaviour
     public Songs dayEndSong;
     public string GetDayEndByCount(int count)
     {
-        Debug.Log("SEARCHING FOR DAY END");
         switch (count)
         {
             case 3:

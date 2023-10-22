@@ -12,5 +12,4 @@
                                                                                                          
                                                                                                                                                                                                                              
                                                                     
-<size=200%> [Press ENTER]
-                                                                                                                                                                                                   
+<size=200%> [Press ENTER]                                                                                                                                                                               

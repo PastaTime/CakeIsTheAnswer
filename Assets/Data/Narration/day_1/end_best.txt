@@ -1,4 +1,6 @@
-﻿You trim a bit here, and a bit there. You’re still not too sure about this part, but it feels like it’s looking right.
+﻿{CHARACTER: typewriter}
+{PLAY: goodflower_slow}
+You trim a bit here, and a bit there. You’re still not too sure about this part, but it feels like it’s looking right.
 
 You arrange the different parts to the best of your aesthetic ability, until you come to a design that you’re satisfied with.
 
@@ -14,20 +16,28 @@ The bell rings.
 
 Greitje comes right up to the counter, her eyes betraying her excitement.
 
+{CHARACTER: gretjie}
 <b>Greitje: So? Do you have it?</b>
+{CHARACTER: typewriter}
 
 You reveal the bouquet out from underneath.
 
+{CHARACTER: gretjie}
 <b>Greitje: Great Goedebloem that is perfect! I knew you were the right one for the job! Thank you so much!</b>
+{CHARACTER: typewriter}
 
 You hand the bouquet over to Grietje.
 She hands you your payment, and then she turns to leave the shop. Just when her hand touches the door, she remembers something and glances back at you.
 
+{CHARACTER: gretjie}
 <b>Greitje: I’ll be doing something tomorrow night, but would you like to join us for supper tonight?</b>
+{CHARACTER: typewriter}
 
 Greitje and Gwen would often invite you over for supper. You were never quite sure why they’d be so kind to a stranger like yourself, but it might be due to their friendship with the previous Florist.
 
+{CHARACTER: florist}
 <b>You: Sure. I’ll head over once I’m done closing up.</b>
+{CHARACTER: typewriter}
 
 Greitje smiles, and continues on her way.
 
@@ -35,3 +45,4 @@ You return to your workspace in the back room, and start to mop things up. Flowe
 Regardless, you do your duty and clean the room to the best of your ability.
 
 After changing out of your work clothes and washing the muck out of your hands, you head over to the Grocers’ for supper.
+{SCENE: Scenes/GraftingGame}

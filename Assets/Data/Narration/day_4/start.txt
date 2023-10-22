@@ -1,3 +1,5 @@
+{CHARACTER: typewriter}
+{PLAY: the_ritual}
 <b>DAY THREE</b> 
 
 The day started as normal.
@@ -10,38 +12,55 @@ You only heard of the place after reading a book bequeathed to you by your grand
 
 Just as you flip the shop sign to OPEN, you hear the pitter-patter of bare-feet slapping across the cobblestone pavement.
 
+{EFFECT: door_latch}
 It was Martijn, and he had a worried look on his face.
 
+{CHARACTER: martijn}
 <b>Martijn: My good friend! There's urgent news!</b>
+{CHARACTER: typewriter}
 
 You look at him in bewilderment. Did something happen to the festival?
 
+{CHARACTER: martijn}
 <b>Martijn: The visitor!! The visitor!! We have no time to lose!! We must act now!!</b>
+{CHARACTER: typewriter}
 
 You start getting worried, the town was not exactly suitable for tourists, many of the townsfolk were not prepared to be ogled by the likes of bloggers or influencers, and some, like Bas, could take things too far.
 
 The bad press could ruin the festival for everyone.
 
+{CHARACTER: florist}
 <b>You: What should I do?</b>
+{CHARACTER: typewriter}
 
 Martijn takes a look around your shop, and taps his lips with his index finger. His toes scrunched and contorted in contention.
 
+{CHARACTER: martijn}
 <b>Martijn: Actually? I was going to help you tidy things up, and make things more presentable for our guest, but it looks like you've got a firm grasp on things.</b>
+{CHARACTER: typewriter}
 
 Martijn smiles, then proceeds to run his fingers across the tops of the flowers on display.
 
+{CHARACTER: martijn}
 <b>Martijn: As you know, this place is quite important to us. The real work that you do in that back room, that's what our town is all about.
 I just don't want some stranger, some outsider, stealing that part of us away without even understanding all our efforts, our histories.</b>
+{CHARACTER: typewriter}
 
+{CHARACTER: florist}
 <b>You: Don't they usually help out with the harvest? Why can't this one? It'll benefit the festival regardless.</b>
+{CHARACTER: typewriter}
 
 He pauses. You can see frustration in his eyes, and in his feet.
 
+{CHARACTER: martijn}
 <b>Martijn: Well... This one's too good for it apparently. We simply cannot use them for that. </b>
+{CHARACTER: typewriter}
 
 A figure wearing a brown trenchcoat marches into the town square, their head swivels to orient themselves in their new environment. Martijn sees this.
 
+{CHARACTER: martijn}
 <b>Martijn: I should go, but if they do come in, just make sure they only see the Good side of Goodflower. We cannot jeopardise the festival, not when we are so close.</b>
+{CHARACTER: typewriter}
  
 Without another fuss, the mayor leaves the store as nonchalantly as he could act.
 
@@ -49,6 +68,7 @@ The stranger looks around some more, studying the signs on the various store fro
 
 You stand at the counter in a cold sweat, your nerves are starting to get the better of you, but you need to keep it together.
 
+{EFFECT: door_latch}
 The bell rings.
 
 The person who stepped inside exuded an air of authority, their suit impeccably tailored, wielding a dangerous look in their piercing eyes.
@@ -57,63 +77,93 @@ They approach the counter and flash a badge discreetly, revealing the emblem of 
 
 The detective scans the shop, their gaze tramples across the various flowers and arrangements on display.
 
+{CHARACTER: detective} 
 <b>Detective: Quite a charming little place you have here.</b>
+{CHARACTER: typewriter}
 
 The way they touched and felt every surface in your shop, made this seem less like a friendly chat, and more of an interrogation.
 
+{CHARACTER: florist}
 <b>You: Thank you. Flowers have a way of brightening up people's days.</b>
+{CHARACTER: typewriter}
 
 The detective nodded, feigning casual interest.
 
+{CHARACTER: detective}
 <b>Detective: Indeed, they do. It's fascinating how certain flowers can evoke such intense sensations, wouldn't you agree.</b>
+{CHARACTER: typewriter}
 
 You gulp involuntarily. You feel your left hand starting to shake, so you casually position it behind your back.
 
+{CHARACTER: florist}
 <b>You: I'm sorry. I'm not sure what this is about. I assume you're investigating something?</b>
+{CHARACTER: typewriter}
 
 The detective continues to study your displays in detail.
 
+{CHARACTER: detective}
 <b>Detective: Investigating? When did I ever mention that I was investigating? Do you have something here for me to investigate?</b>
+{CHARACTER: typewriter}
 
 They are really testing you now.
 
+{CHARACTER: florist}
 <b>You: I'm not sure what you think you can find in a simple flower shop. But I can assure you that everything here is above board.</b>
+{CHARACTER: typewriter}
 
 They see the locked door behind you, and starts to make their way towards it.
 
+{CHARACTER: detective}
 <b>Detective: What do you have locked up in there? Didn't know there were so many flower thieves out and about in a small town like this.</b>
+{CHARACTER: typewriter}
 
 You move to block their way. You try your best to give them a stern look, but they seem to be focused elsewhere.
 
+{CHARACTER: florist}
 <b>You: You cannot enter private property without a warrant, so unless you're here to order a flower arrangement, I will have to ask you to leave.</b>
+{CHARACTER: typewriter}
 
 The detective looks somewhat amused.
 
+{CHARACTER: detective}
 <b>Detective: I never knew you country bumpkins would be so versed in international law. Well, I guess that's my cue to leave. It was a pleasure talking to you.</b>
+{CHARACTER: typewriter}
 
 They turn towards the door, but then stops before taking another step. They raise a finger.
 
+{CHARACTER: detective}
 <b>Detective: One more thing...  The gardens behind the town hall, it looked like it was being prepared for some kind of big event, and yet no one on this side of the country has ever heard of such a thing.</b>
+{CHARACTER: typewriter}
 
 <b>In fact, it was hard enough as it is to find this town in the first place. Goodflower? What kind of name was that? I've not seen any since my entire time here.</b>
+{CHARACTER: typewriter}
 
 <b>Your withered little display pieces certainly don't count in my eyes.</b>
+{CHARACTER: typewriter}
 
 The detective turns back towards you, this time their gaze is fully affixed upon yours, you could almost feel it drilling into the depths of your soul.
 You don't say anything back, in the hope that they get the message.
 
+{CHARACTER: detective}
 <b>Detective: My point is... What is it that you really do?</b>
+{CHARACTER: typewriter}
 
 You feel the urge to do something. Something that could jeopardise everything.
 
+{CHARACTER: florist}
 <b>You: I make flower arrangements.</b>
+{CHARACTER: typewriter}
 
 The detective leans in closer, an ugly smirk stretched across their face.
 
+{CHARACTER: detective}
 <b>Detective: Out of what?</b>
+{CHARACTER: typewriter}
 
 You take a deep breath, and realise that there is only one option left to you.
 
 You take out the key to the back room.
 
+{CHARACTER: florist}
 <b>You: Here, let me show you...
+{SCENE: Scenes/ArtScene}
