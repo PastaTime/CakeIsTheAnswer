@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: '  '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 62bd00a1958367141a335706efe7946d, type: 2}
   m_sharedMaterial: {fileID: -409897979975086899, guid: 62bd00a1958367141a335706efe7946d, type: 2}
@@ -738,6 +738,10 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 220038164}
+    - target: {fileID: 7979521246825371418, guid: 0c683f0283c362545a6fa4156fe2f23c, type: 3}
+      propertyPath: narrationSpeed
+      value: 0.00005
+      objectReference: {fileID: 0}
     - target: {fileID: 7979521246825371418, guid: 0c683f0283c362545a6fa4156fe2f23c, type: 3}
       propertyPath: narrationAudioSpeed
       value: 0.05

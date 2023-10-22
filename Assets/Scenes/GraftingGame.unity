@@ -393,6 +393,7 @@ MonoBehaviour:
   frame: {fileID: 747508799}
   textWindow: {fileID: 747508802}
   _manager: {fileID: 0}
+  _soundManager: {fileID: 0}
   audioSource: {fileID: 747508803}
   forwardClips:
   - {fileID: 8300000, guid: 87d7b66b86f400148a1ba9fe01b4bc20, type: 3}
@@ -805,7 +806,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1894199128
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
@@ -17,7 +18,8 @@ namespace Narration
         private float typeAudioCooldown = 0f;
         private KeyCode continueKey;
         
-        private const string CommandRegex = @"{.*}(\r\n|\r|\n)";
+        private const string CommandRegex = @"{.*}(\r\n|\r|\n)?";
+        private const string WhiteSpaceRegex = @"^\s*$";
         private const string PressToContinue = "\n\n<b>Press {0} to Continue</b>";
         private const string PlayCommand = "PLAY";
         private const string CharacterCommand = "CHARACTER";
@@ -53,7 +55,6 @@ namespace Narration
                     typeAudioCooldown = TypeAudioSpeed;
                 }
                 
-
                 if (textMesh.isTextOverflowing && story[endIndex] == '\n')
                 {
                     textMesh.text += string.Format(PressToContinue, keyName);
@@ -75,15 +76,15 @@ namespace Narration
                 case '{':
                     yield return ProcessNarrationCommand();
                     break;
+                default:
+                    textMesh.text = Regex.Replace(story[startIndex..endIndex], CommandRegex, "");
+                    break;
             }
-
-            textMesh.text = Regex.Replace(story[startIndex..endIndex], CommandRegex, "");
         }
 
         private void ReadUntil(char character)
         {
-            while (endIndex < story.Length && story[endIndex - 1] != character)
-                endIndex++;
+            while (++endIndex < story.Length && story[endIndex] != character) {}
         }
 
         private IEnumerator ProcessNarrationCommand()
@@ -91,7 +92,7 @@ namespace Narration
             var start = endIndex;
             ReadUntil('}');
             
-            var command = story[start..(endIndex - 1)];
+            var command = story[start..endIndex];
 
             var parameters = command.Split(':');
             var directive = parameters[0].ToUpper();
@@ -111,9 +112,12 @@ namespace Narration
                     break;
                 
                 case LoadSceneCommand:
-                    textMesh.text += string.Format(PressToContinue, continueKey);
-                    yield return WaitForKeyPress(continueKey);
-                    soundManager.PlaySoundEffect(CurrentNewlineSound);
+                    if (!Regex.IsMatch(textMesh.text, WhiteSpaceRegex))
+                    {
+                        textMesh.text += string.Format(PressToContinue, continueKey);
+                        yield return WaitForKeyPress(continueKey);
+                        soundManager.PlaySoundEffect(CurrentNewlineSound);
+                    }
                     SceneManager.LoadScene(argument);
                     break;
             }

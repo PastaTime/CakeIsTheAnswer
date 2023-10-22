@@ -77,7 +77,8 @@ They approach the counter and flash a badge discreetly, revealing the emblem of 
 
 The detective scans the shop, their gaze tramples across the various flowers and arrangements on display.
 
-{CHARACTER: detective} Quite a charming little place you have here.</b>
+{CHARACTER: detective} 
+<b>Detective: Quite a charming little place you have here.</b>
 {CHARACTER: typewriter}
 
 The way they touched and felt every surface in your shop, made this seem less like a friendly chat, and more of an interrogation.

@@ -54,10 +54,6 @@ public class TextController : MonoBehaviour
         _manager = FindObjectOfType<Manager>();
         _soundManager = FindObjectOfType<SoundManager>();
         _manager.collected.Clear();
-        
-        Debug.Log("FOUND: " +  _manager);
-        // for (int i = 0; i < textWindow.Files; i++)
-        // { allLines.Add(null); }
         resolutionWidth = textWindow.WindowWidth;
         string text = frame.text;
         originalLines = text.Split('\n');
