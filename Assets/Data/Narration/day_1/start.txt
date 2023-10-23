@@ -1,0 +1,72 @@
+{CHARACTER: typewriter}
+{PLAY: goodflower_slow}
+<b>DAY ONE</b> 
+
+The flower shop, with its white-washed facade adorned with cascading ivy and window boxes overflowing with colourful blooms, stood as a beacon of beauty and tranquillity in the quaint, secluded town of Goodflower.
+
+{EFFECT: door_latch}
+The soft chime of a bell announced the arrival of a visitor as they stepped through the wooden door, greeted by a captivating dance of fragrances that filled the air.
+
+It has only been a couple of weeks since you first arrived in town, but as their new Florist you were quickly able to gain the acceptance of the locals, and in turn, their patronage.
+
+The person who had just walked in was the town’s grocer, Grietje, who also happened to be your next door neighbour. She was a broadly-built woman in her early thirties, with blue eyes and short, blonde hair.
+
+You greet her, thanking her for all the help that she has given you so far.
+
+{CHARACTER: gretjie}
+<b>Grietje: I hope you’ve fully settled in now? How are you finding Goodflower? We are a colourful bunch aren’t we?</b>
+{CHARACTER: typewriter}
+
+A smirk flashes across her face. Her voice was deep but had an upbeat quality about it.
+
+{CHARACTER: florist}
+<b>You: I’ll be honest, it’s been quite an adjustment, but I think I’ve gotten the hang of things now.</b>
+{CHARACTER: typewriter}
+
+Grietje switches her gaze between the various potted flowers you have displayed in your shop. She nods slightly at your reply, before turning back to you and meeting your eyes.
+
+{CHARACTER: gretjie}
+<b>Grietje: Good… That’s good.</b>
+{CHARACTER: typewriter}
+
+She steps forward, closing the distance between you.
+
+{CHARACTER: gretjie}
+<b>Grietje: In that case, maybe it’s time I finally ordered something.</b>
+{CHARACTER: typewriter}
+
+She steps forward again, briefly passing a glance over her shoulder to check that no one was eavesdropping.
+
+You lean in closer.
+
+{CHARACTER: gretjie}
+<b>Grietje: My Gwen has been feeling a bit down lately, and our anniversary is tomorrow, so perhaps I could surprise her with a nice bouquet.</b>
+{CHARACTER: typewriter}
+
+She pauses, and thinks for a bit.
+
+{CHARACTER: gretjie}
+<b>Grietje: I want to show her my love of course, but also reassure her that things will work out. She does worry a lot, especially with the festival coming up.</b>
+{CHARACTER: typewriter}
+
+She looks at you expectantly.
+
+{CHARACTER: florist}
+<b>You: I see. Did you have any specific flowers in mind?</b>
+{CHARACTER: typewriter}
+
+Grietje looks at the roses in the corner, and then looks up towards the ceiling, trying to come up with a thoughtful answer.
+
+{CHARACTER: gretjie}
+<b>Grietje: Well… I’m not really well-versed in flowers, they aren’t vegetables after all. I will trust your judgement in this case.</b>
+{CHARACTER: typewriter}
+
+You look to the leather-bound journal on the shelf next to you, it had the meanings of all the different flowers noted down. It must have been the property of the previous Florist, but regardless it was a godsend for someone inexperienced like yourself.
+
+<b>You browse your inventory and start cutting.</b> 
+<b>Assess the meaning behind each flower and then choose three flowers to make the bouquet that best suits the customer.</b> 
+
+<b>Q and E to navigate your inventory</b>
+<b>ARROW keys to position cursor</b>
+<b>BACKSPACE to trim</b>
+{SCENE: Scenes/GraftingGame}

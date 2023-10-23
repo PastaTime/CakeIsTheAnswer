@@ -1,0 +1,21 @@
+{PLAY: a_peculiar_customer}
+{CHARACTER: florist}
+<b>You: What were they like?</b>
+{CHARACTER: typewriter}
+
+{CHARACTER: bas}
+<b>Bas: Loyal.</b>
+{CHARACTER: typewriter}
+
+You think for a bit. Bas glances back briefly. The sheen in his eyes betray his true feelings.
+
+{CHARACTER: bas}
+<b>Bas: So can you do it?</b>
+{CHARACTER: typewriter}
+
+{CHARACTER: florist}
+<b>You: Yes.</b>
+{CHARACTER: typewriter}
+
+You open up your journal.
+{SCENE: Scenes/GraftingGame}
